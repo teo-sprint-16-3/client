@@ -1,10 +1,10 @@
-import Sample from "./components/Sample";
+import { NavLink } from "react-router-dom";
 
 export default function App() {
   return (
     <>
       <h2>Hello from App</h2>
-      <Sample />
+      <NavLink to="/sample">Sample Page</NavLink>
     </>
   );
 }
