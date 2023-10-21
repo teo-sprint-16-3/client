@@ -1,9 +1,17 @@
-svg {
-  display: inline-block;
-  vertical-align: middle;
-  width: 700px;
+.wrapper {
+  overflow: auto;
 }
 
-path {
+.mapBox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 900px;
+}
+
+.mapGeography {
   fill: #2a354d;
+
+  &:hover {
+    fill: red;
+  }
 }
