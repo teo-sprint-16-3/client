@@ -16,8 +16,8 @@ export function CategoryTab() {
       </button>
       <button
         className={`
-        ${s.categoryTab} ${category === "nation" ? s.active : ""}`}
-        onClick={() => setCategory("nation")}
+        ${s.categoryTab} ${category === "country" ? s.active : ""}`}
+        onClick={() => setCategory("country")}
       >
         국가
       </button>
