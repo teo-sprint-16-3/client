@@ -3,11 +3,7 @@ import s from "./index.module.scss";
 export default function Sample() {
   return (
     <div className={s.outerXl}>
-      <div className={s.outerLg}>
-        <div className={s.outerMd}>
-          <h2>Hello from Sample</h2>
-        </div>
-      </div>
+      <h2>준비중 입니다.</h2>
     </div>
   );
 }

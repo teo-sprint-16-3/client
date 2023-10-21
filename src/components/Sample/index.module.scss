@@ -1,17 +1,8 @@
 .outerXl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20rem;
   height: 20rem;
-  background: yellowgreen;
-}
-
-.outerLg {
-  width: 15rem;
-  height: 15rem;
-  background: aqua;
-}
-
-.outerMd {
-  width: 10rem;
-  height: 10rem;
-  background: pink;
+  background: rgb(218, 218, 218);
 }
