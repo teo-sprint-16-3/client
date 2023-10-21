@@ -14,10 +14,6 @@ export const router = createBrowserRouter([
     element: <Sample />,
   },
   {
-    path: "/mypage",
-    element: <MyPage />,
-  },
-  {
     path: "/map",
     element: <WorldMapPage />,
   },
