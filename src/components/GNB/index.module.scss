@@ -1,0 +1,16 @@
+.gnbWrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: inherit;
+  height: 64px;
+  background: slategray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.mapSection {
+}
