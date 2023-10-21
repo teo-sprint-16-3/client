@@ -11,4 +11,8 @@ export const router = createBrowserRouter([
     path: "/sample",
     element: <Sample />,
   },
+  {
+    path: "/map",
+    element: <div></div>,
+  },
 ]);
