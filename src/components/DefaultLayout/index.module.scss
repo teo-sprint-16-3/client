@@ -1,0 +1,13 @@
+.mostOuterWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout {
+  width: 360px;
+  height: 100%;
+  min-height: 100vh;
+  border: 1px solid black;
+  position: relative;
+}
