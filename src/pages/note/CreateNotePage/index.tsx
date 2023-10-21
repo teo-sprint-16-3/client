@@ -1,3 +1,4 @@
+import SubmitButton from "../../../components/common/Buttons/SubmitButton";
 import Container from "../../../components/common/Container";
 import BgmInput from "../../../components/note/BgmInput";
 import DateInput from "../../../components/note/DateInput";
@@ -17,6 +18,8 @@ export default function CreateNotePage() {
       <BgmInput />
       <PictureInput />
       <TextInput />
+
+      <SubmitButton />
     </Container>
   );
 }
