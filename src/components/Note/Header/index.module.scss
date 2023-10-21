@@ -1,0 +1,29 @@
+.container {
+  width: 360px;
+  height: 106px;
+  padding: 0 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note {
+  color: #000;
+  font-family: Pretendard Variable;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 36px */
+  letter-spacing: -0.528px;
+}
+
+.filter {
+  color: #000;
+  font-family: Pretendard Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.44px;
+}

@@ -1,0 +1,45 @@
+.container {
+  width: 140px;
+  height: 109px;
+  padding: 15px 16px;
+  gap: 13px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #d9d9d9;
+}
+
+.wrapper {
+  gap: 6px;
+
+  display: flex;
+}
+
+.flag {
+  width: 54px;
+  height: 40px;
+}
+
+.year {
+  width: 54px;
+  height: 40px;
+
+  color: #000;
+  font-family: Pretendard Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.44px;
+}
+
+.title {
+  color: #000;
+  font-family: Pretendard Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.44px;
+}
