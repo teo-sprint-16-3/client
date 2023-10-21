@@ -121,6 +121,3 @@ const MyPage = () => {
 };
 
 export default MyPage;
-function downloadURI(img: any, arg1: string) {
-  throw new Error("Function not implemented.");
-}

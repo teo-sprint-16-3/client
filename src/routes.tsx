@@ -21,4 +21,8 @@ export const router = createBrowserRouter([
     path: "/map",
     element: <WorldMapPage />,
   },
+  {
+    path: "/mypage",
+    element: <MyPage />,
+  },
 ]);
