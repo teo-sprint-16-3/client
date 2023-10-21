@@ -6,6 +6,37 @@ export default function App() {
     <DefaultLayout>
       <h2>Hello from App</h2>
       <NavLink to="/sample">Sample Page</NavLink>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
+      <h2>Hello from App</h2>
     </DefaultLayout>
   );
 }
