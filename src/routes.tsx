@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Sample from "./components/Sample";
 import MyPage from "./pages/MyPage";
-import WorldMap from "./components/WorldMap";
+import WorldMapPage from "./pages/WorldMapPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +19,6 @@ export const router = createBrowserRouter([
   },
   {
     path: "/map",
-    element: <WorldMap />,
+    element: <WorldMapPage />,
   },
 ]);
