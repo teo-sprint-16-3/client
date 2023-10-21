@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
     element: <WorldMapPage />,
   },
   {
-    path: "/mypage",
+    path: "/my",
     element: <MyPage />,
   },
 ]);
