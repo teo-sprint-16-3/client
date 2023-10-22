@@ -1,0 +1,45 @@
+.container {
+  width: 320px;
+  height: 108px;
+  padding: 20px;
+  gap: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.countryWrapper {
+  gap: 8px;
+
+  display: flex;
+  align-items: center;
+}
+
+.countWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flag {
+  width: 35px;
+  height: 21px;
+
+  border-radius: 4px;
+}
+
+.text {
+  color: var(--black-222, #222);
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.2px;
+}
+
+.count {
+  color: var(--point-color-main, #ff7f57);
+}
