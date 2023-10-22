@@ -17,9 +17,9 @@ export default function WorldMap() {
             {({ geographies }) =>
               geographies.map((geo) => {
                 const name = geo.properties.name;
-                console.log(name);
                 return (
                   <Geography
+                    onClick={() => console.log(name)}
                     key={geo.rsmKey}
                     geography={geo}
                     className={s.country}
