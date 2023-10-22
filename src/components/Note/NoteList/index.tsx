@@ -5,7 +5,6 @@ import { CountrySummary } from "./CountrySummary";
 import { YearSummary } from "./YearSummary";
 
 import s from "./index.module.scss";
-import { get } from "http";
 
 interface Props {
   category: string;
@@ -23,6 +22,12 @@ interface DataProps {
   location?: string;
   bgm?: string;
   image?: string;
+}
+
+interface CountryDataProps {
+  flag: string;
+  name: string;
+  count: number;
 }
 
 const mockData = [
@@ -53,6 +58,31 @@ const mockData = [
   },
 ];
 
+const countryMockData = [
+  {
+    flag: "/src/assets/countryFlags/Mongolia.svg",
+    name: "몽골",
+    count: 13,
+  },
+  {
+    flag: "/src/assets/countryFlags/Uzbekistan.svg",
+    name: "우즈베키스탄",
+    count: 9,
+  },
+  {
+    flag: "/src/assets/countryFlags/United States.svg",
+    name: "미국",
+    count: 6,
+  },
+  {
+    flag: "/src/assets/countryFlags/Canada.svg",
+    name: "캐나다",
+    count: 3,
+  },
+];
+
+const countMockData = [];
+
 function getStartDate(date: string) {
   return date.split("-")[0];
 }
@@ -68,7 +98,7 @@ function compareDate(date1: Date, date2: Date, isAscending: boolean) {
 }
 
 export function NoteList({ category, sortingOrder }: Props) {
-  const [data, setData] = useState<DataProps[]>([]);
+  const [data, setData] = useState<any[]>([]);
 
   function getNoteSummary() {
     const data = mockData.slice();
@@ -83,8 +113,33 @@ export function NoteList({ category, sortingOrder }: Props) {
     return data;
   }
 
+  // TODO: mockData 기반으로 로직 구현
+  function getCountrySummary() {
+    const data = countryMockData.slice();
+
+    data.sort((a, b) =>
+      sortingOrder === "ascending" ? a.count - b.count : b.count - a.count,
+    );
+
+    return data;
+  }
+
+  // TODO: mockData 기반으로 로직 구현
+  function getYearSummary() {}
+
   useEffect(() => {
-    const data = getNoteSummary();
+    let data: any[] = []; // TODO: union type으로 변경
+    switch (category) {
+      case "all":
+        data = getNoteSummary();
+        break;
+      case "country":
+        data = getCountrySummary();
+        break;
+      case "year":
+        // data = getYearSummary();
+        break;
+    }
     setData(data);
   }, [category, sortingOrder]);
 
@@ -93,13 +148,9 @@ export function NoteList({ category, sortingOrder }: Props) {
       {category === "all" &&
         data.map(({ ...props }) => <NoteSummary {...props} />)}
 
-      {category === "country" && (
-        <CountrySummary
-          flag="/src/assets/icons/mongolian-state.png"
-          name="몽골"
-          count={13}
-        />
-      )}
+      {category === "country" &&
+        data.map(({ ...props }) => <CountrySummary {...props} />)}
+
       {category === "year" && (
         <YearSummary
           year={2023}
