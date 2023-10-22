@@ -5,11 +5,14 @@ import DefaultLayout from "./components/DefaultLayout";
 import "./styles/index.scss";
 import "normalize.css";
 import { router } from "./routes.tsx";
+import { RecoilRoot } from "recoil";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <DefaultLayout>
-      <RouterProvider router={router} />
-    </DefaultLayout>
-  </React.StrictMode>,
+  <RecoilRoot>
+    <React.StrictMode>
+      <DefaultLayout>
+        <RouterProvider router={router} />
+      </DefaultLayout>
+    </React.StrictMode>
+  </RecoilRoot>,
 );
