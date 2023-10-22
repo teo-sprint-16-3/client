@@ -9,10 +9,12 @@ import TitleInput from "../../../components/Note/TitleInput";
 import Header from "../../../components/Note/common/Header";
 import { useState } from "react";
 import BottomSheet from "../../../components/Note/common/BottomSheet";
+import { produce } from "immer";
 
 export default function CreateNotePage() {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [bottomSheetContent, setBottomSheetContent] = useState(null);
+  const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
 
   const handleBottomSheetOpen = (content: any): void => {
     setBottomSheetContent(content);
@@ -23,6 +25,14 @@ export default function CreateNotePage() {
     setIsBottomSheetOpen(false);
   };
 
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    setFileUrls(
+      produce((draft) => {
+        draft[index] = fileUrl;
+      }),
+    );
+  };
+
   return (
     <>
       <Container isBottomSheetOpen={isBottomSheetOpen}>
@@ -31,10 +41,11 @@ export default function CreateNotePage() {
         <DateInput onSelectCountry={handleBottomSheetOpen} />
         <LocationInput onSelectCountry={handleBottomSheetOpen} />
         <BgmInput />
-        <PictureInput />
+        <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
         <TextInput />
         <SubmitButton />
       </Container>
+
       <div>
         {isBottomSheetOpen && (
           <BottomSheet
