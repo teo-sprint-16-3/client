@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import s from "./index.module.scss";
 
 interface Props {
@@ -7,8 +9,10 @@ interface Props {
 }
 
 export function CountrySummary({ flag, name, count }: Props) {
+  const navigate = useNavigate();
+
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={() => navigate(`/note/${name}`)}>
       <div className={s.countryWrapper}>
         <img className={s.flag} src={flag} alt="국기 이미지" />
         <div className={s.text}>{name}</div>
