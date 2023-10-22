@@ -93,3 +93,7 @@ $POINT-2: #FFE2D8;
   line-height: 150%;
   letter-spacing: -2%;
 }
+
+@mixin shadow1 {
+  box-shadow: 0 3px 2px 2px rgba(0, 0, 0, 0.04);
+}
