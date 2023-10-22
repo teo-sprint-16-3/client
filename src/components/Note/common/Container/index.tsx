@@ -8,7 +8,7 @@ interface Props {
 
 export default function Container({ isBottomSheetOpen, children }: Props) {
   return (
-    <div className={`${isBottomSheetOpen ? s.bottomSheetOpen : ""}`}>
+    <div className={`${s.wrap} ${isBottomSheetOpen ? s.bottomSheetOpen : ""}`}>
       <div className={s.noteContent}>{children}</div>
     </div>
   );

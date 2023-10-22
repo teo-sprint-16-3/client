@@ -1,15 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
+import IntroPage from "./pages/IntroPage";
 import { Note } from "./pages/Note";
 import MyPage from "./pages/MyPage";
 import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
 import CreateNotePage from "./pages/Note/CreateNotePage";
+import BadgePage from "./pages/MyPage/BadgePage";
+import { Suspense } from "react";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <IntroPage />,
   },
   {
     path: "/note",
@@ -24,11 +26,19 @@ export const router = createBrowserRouter([
     element: <CreateNotePage />,
   },
   {
-    path: "/my",
+    path: "my",
     element: <MyPage />,
   },
   {
-    path: "/my/stamp",
+    path: "my/stamp",
     element: <StampPage />,
+  },
+  {
+    path: "my/badge",
+    element: (
+      <Suspense>
+        <BadgePage />
+      </Suspense>
+    ),
   },
 ]);

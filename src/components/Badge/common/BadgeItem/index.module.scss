@@ -1,0 +1,31 @@
+@import '/src/styles/variables';
+
+.wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: $BLACK-FFF;
+
+  .imgWrap {
+    img {
+      width: 54px;
+      height: 54px
+    }
+  }
+
+  .txtWrap {
+    .name {
+      margin-bottom: 3px;
+      @include headline3;
+      color: $BLACK-222;
+    }
+
+    .description {
+      @include body1;
+      color: $BLACK-666;
+    }
+  }
+}

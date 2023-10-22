@@ -16,6 +16,7 @@ import {
 } from "../../recoil/sample/atom";
 
 import s from "./index.module.scss";
+import CreateNotePage from "./CreateNotePage";
 
 export function Note() {
   const [category, setCategory] = useState("all");
@@ -23,6 +24,8 @@ export function Note() {
 
   // 임시
   const [count, setCount] = useState(10);
+  const [openModal, setOpenModal] = useState(false);
+  console.log(openModal);
 
   const [focusMap, setFocusMap] = useRecoilState(focusMapState);
   const [focusNote, setFocusNote] = useRecoilState(focusNoteState);
@@ -43,6 +46,7 @@ export function Note() {
 
   return (
     <div className={s.container}>
+      {openModal && <CreateNotePage setOpenModal={setOpenModal} />}
       <NoteHeader />
       <CategoryTab category={category} handleCategory={handleCategory} />
       <SortingTab
@@ -54,9 +58,9 @@ export function Note() {
         {count === 0 ? (
           <div className={s.notfound}>아직 작성된 페이지가 없어요</div>
         ) : (
-          <NoteList category={category} />
+          <NoteList category={category} sortingOrder={sortingOrder} />
         )}
-        <WriteButton />
+        <WriteButton openModal={openModal} setOpenModal={setOpenModal} />
       </div>
       <GNB />
     </div>

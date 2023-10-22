@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 const StampPage = () => {
   return (
     <div className={styles.container}>
-      <Header />
+      <Header title="여행 국가" />
       <Stamp />
     </div>
   );
