@@ -1,0 +1,31 @@
+.container {
+  padding: 10px 30px;
+}
+.stamp {
+  width: 300px;
+  height: 750px;
+}
+.noStamp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 750px;
+}
+.stampBox {
+  float: left;
+  justify-content: space-between;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+}
+.nameBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+.flag {
+  width: 80px;
+  height: 50px;
+  background-color: lightgray;
+}

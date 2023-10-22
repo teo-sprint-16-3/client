@@ -3,6 +3,7 @@ import App from "./App";
 import Sample from "./components/Sample";
 import { Note } from "./pages/Note";
 import MyPage from "./pages/MyPage";
+import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
 import CreateNotePage from "./pages/note/CreateNotePage";
 
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
   {
     path: "/my",
     element: <MyPage />,
+  },
+  {
+    path: "/my/stamp",
+    element: <StampPage />,
   },
 ]);
