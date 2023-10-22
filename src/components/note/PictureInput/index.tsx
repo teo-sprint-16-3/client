@@ -1,5 +1,6 @@
 import s from "./index.module.scss";
 import UploadFile from "../common/UploadFile";
+import Label from "../common/Label";
 
 interface PictureInputProps {
   fileUrls: string[];
@@ -12,7 +13,7 @@ export default function PictureInput({
 }: PictureInputProps) {
   return (
     <div className={s.pictureGroup}>
-      <label htmlFor="pictureInput">사진</label>
+      <Label htmlFor="pictureInput" text="사진" isRequired={false} />
       <div className={s.uploadContainer}>
         {fileUrls.map((file: string, index: number) => (
           <UploadFile
