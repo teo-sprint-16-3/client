@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import introLogo from "../../assets/icons/introLogo.svg";
 import s from "./index.module.scss";
+import Popup from "../common/Popup";
 
 export default function Intro() {
   const navigate = useNavigate();
