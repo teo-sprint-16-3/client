@@ -1,8 +1,10 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import introLogo from "../../assets/icons/introLogo.svg";
 import s from "./index.module.scss";
 
 export default function Intro() {
+  const navigate = useNavigate();
+
   return (
     <div className={s.wrapper}>
       <div className={s.logoBox}>
@@ -10,7 +12,10 @@ export default function Intro() {
       </div>
       <div className={s.btnBox}>
         <button className={[s.btn, s.loginBtn].join(" ")}>SNS 로그인</button>
-        <button className={[s.btn, s.exploreBtn].join(" ")}>
+        <button
+          onClick={() => navigate("/map")}
+          className={[s.btn, s.exploreBtn].join(" ")}
+        >
           <span>둘러보기</span>
         </button>
       </div>
