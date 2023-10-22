@@ -1,30 +1,31 @@
-import { useState } from "react";
-
 import s from "./index.module.scss";
 
-export function CategoryTab() {
-  const [category, setCategory] = useState("all");
+interface Props {
+  category: string;
+  handleCategory: (category: string) => void;
+}
 
+export function CategoryTab({ category, handleCategory }: Props) {
   return (
     <div className={s.container}>
       <button
         className={`
         ${s.categoryTab} ${category === "all" ? s.active : ""}`}
-        onClick={() => setCategory("all")}
+        onClick={() => handleCategory("all")}
       >
         전체
       </button>
       <button
         className={`
         ${s.categoryTab} ${category === "country" ? s.active : ""}`}
-        onClick={() => setCategory("country")}
+        onClick={() => handleCategory("country")}
       >
         국가
       </button>
       <button
         className={`
         ${s.categoryTab} ${category === "year" ? s.active : ""}`}
-        onClick={() => setCategory("year")}
+        onClick={() => handleCategory("year")}
       >
         연도
       </button>
