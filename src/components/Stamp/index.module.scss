@@ -1,31 +1,43 @@
 .container {
-  padding: 10px 30px;
+  height: 100vh;
+  background: #f7f7f7;
 }
 .stamp {
-  width: 300px;
-  height: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 20px;
+  gap: 25px;
 }
 .noStamp {
   display: flex;
-  justify-content: center;
+  width: 358px;
+  height: 815px;
   align-items: center;
-  width: 300px;
-  height: 750px;
+  justify-content: center;
+  background: #f7f7f7;
+  gap: 25px;
 }
 .stampBox {
   float: left;
   justify-content: space-between;
-  width: 80px;
-  height: 80px;
-  margin: 10px;
+  width: 89px;
+  height: 81px;
 }
 .nameBox {
   display: flex;
   justify-content: center;
-  margin-top: 4px;
+  color: #000;
+
+  /* body/b1 */
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 22.5px */
+  letter-spacing: -0.3px;
 }
 .flag {
-  width: 80px;
-  height: 50px;
+  width: 90px;
+  height: 54px;
   background-color: lightgray;
 }

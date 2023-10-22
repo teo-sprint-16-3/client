@@ -1,13 +1,13 @@
 import Header from "../../components/Stamp/Header";
 import Stamp from "../../components/Stamp";
-import GNB from "../../components/GNB";
+
+import styles from "./index.module.scss";
 
 const StampPage = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
       <Stamp />
-      <GNB />
     </div>
   );
 };
