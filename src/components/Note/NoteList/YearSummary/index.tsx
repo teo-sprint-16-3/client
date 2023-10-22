@@ -14,9 +14,17 @@ export function YearSummary({ year, flags, count }: Props) {
       <div className={s.flagWrapper}>
         <div className={s.text}>{year}</div>
         <div className={s.flagBox}>
-          {flags.slice(0, FLAG_MAX).map((flag, index) => (
-            <img key={index} className={s.flag} src={flag} alt="국기 이미지" />
-          ))}
+          {flags !== undefined &&
+            flags
+              .slice(0, FLAG_MAX)
+              .map((flag, index) => (
+                <img
+                  key={index}
+                  className={s.flag}
+                  src={flag}
+                  alt="국기 이미지"
+                />
+              ))}
         </div>
         {count > FLAG_MAX && (
           <div className={s.subtext}>+{count - FLAG_MAX}</div>
