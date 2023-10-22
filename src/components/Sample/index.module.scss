@@ -1,17 +1,33 @@
-.outerXl {
-  width: 20rem;
-  height: 20rem;
-  background: yellowgreen;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    height: 100px;
+  }
 }
 
-.outerLg {
-  width: 15rem;
-  height: 15rem;
-  background: aqua;
+.ingImg {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("src/assets/earth.png");
+  background-size: cover;
 }
 
-.outerMd {
-  width: 10rem;
-  height: 10rem;
-  background: pink;
+.backButton {
+  margin: 10px;
+  background-color: none;
+  border: 1px solid rgb(173, 173, 173);
+  cursor: pointer;
+  height: 40px;
+  width: 90%;
+}
+
+.backButton:hover {
+  background-color: #ccc;
+  color: rgb(249, 249, 249);
 }
