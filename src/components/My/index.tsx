@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import s from "./index.module.scss";
 import shareKakaotalk from "./util/shareKakaotalk";
+import Header from "../My/common/Header";
 
 const { Kakao }: any = window;
 
@@ -23,39 +24,41 @@ const My = () => {
 
   return (
     <section className={s.container}>
-      <h1 className={s.tit}>마이페이지</h1>
+      <Header title="마이페이지" />
       <div className={s.contents} ref={screenRef}>
         <div className={s.myImg}>
           <span>사진</span>
         </div>
         <div className={s.infoWrap}>
-          <p className={s.nickname}>
-            용맹한 여행자 <strong>닉네임</strong>
-          </p>
+          <h2>소금</h2>
+          <span className={s.nickname}>용맹한 여행자</span>
           <span className={s.badgeNotice}>
             0번 더 여행시 <strong>대륙의 정복자</strong> 뱃지를 얻을 수 있어요
           </span>
         </div>
-        <div className={s.statWrap}>
-          <dl>
-            <dt>총 여행국가</dt>
-            <dd>
-              <Link to="/">000개국</Link>
-            </dd>
-          </dl>
-          <dl>
-            <dt>총 여행일</dt>
-            <dd>
-              <Link to="/">000일</Link>
-            </dd>
-          </dl>
-          <dl>
-            <dt>총 페이지</dt>
-            <dd>
-              <Link to="/">000개</Link>
-            </dd>
-          </dl>
-        </div>
+        <ul className={s.statWrap}>
+          <li>
+            <Link to="/">
+              <span>12</span>국
+            </Link>
+            <span>상위 30%</span>
+            <span>총 여행국가</span>
+          </li>
+          <li>
+            <Link to="/">
+              <span>000</span>일
+            </Link>
+            <span>상위 42%</span>
+            <span>총 여행일</span>
+          </li>
+          <li>
+            <Link to="/">
+              <span>000</span>개
+            </Link>
+            <span>상위 9%</span>
+            <span>총 페이지</span>
+          </li>
+        </ul>
       </div>
       <Link to="/" className={s.myBadgeStatus}>
         <div className={s.badgeImg} />

@@ -1,1 +1,95 @@
 // 변수
+
+// Main Color
+$MAIN-500: #005AE0;
+$MAIN-400: #1472FF;
+$MAIN-300: #4791FF;
+$MAIN-200: #7AAFFF;
+$MAIN-100: #ADCEFF;
+$MAIN-050: #CCE0FF;
+
+// Black Color
+$BLACK-222: #222;
+$BLACK-666: #666;
+$BLACK-AAA: #AAA;
+$BLACK-DDD: #DDD;
+$BLACK-F2: #F2F2F2;
+$BLACK-F7: #F7F7F7;
+$BLACK-FFF: #FFF;
+
+// Point Color
+$POINT-1: #FF7F57;
+$POINT-2: #FFE2D8;
+
+// Font Mixin
+@mixin display1 {
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -1%;
+}
+
+@mixin display2 {
+  font-family: Pretendard;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -1%;
+}
+
+@mixin headline1 {
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -1%;
+}
+
+@mixin headline2 {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -1%;
+}
+
+@mixin headline3 {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -1%;
+}
+
+@mixin body1 {
+  font-family: Pretendard;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -2%;
+}
+
+@mixin body2 {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -2%;
+}
+
+@mixin caption1 {
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 150%;
+  letter-spacing: -2%;
+}
+
+@mixin caption2 {
+  font-family: Pretendard;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 150%;
+  letter-spacing: -2%;
+}
