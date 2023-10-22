@@ -1,5 +1,4 @@
 .wrapper {
-  margin: 0 auto;
   overflow: auto;
 }
 
@@ -10,10 +9,13 @@
   height: 100vh;
 }
 
-.mapGeography {
-  fill: #d9d9d9;
-
-  &:hover {
-    fill: red;
+.country {
+  &:focus {
+    display: none;
   }
 }
+
+.clickedCountry path {
+  fill: #1472ff !important;
+}
+
