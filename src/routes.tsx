@@ -5,6 +5,7 @@ import MyPage from "./pages/MyPage";
 import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
 import CreateNotePage from "./pages/Note/CreateNotePage";
+import BadgePage from "./pages/MyPage/BadgePage";
 
 export const router = createBrowserRouter([
   {
@@ -24,11 +25,15 @@ export const router = createBrowserRouter([
     element: <CreateNotePage />,
   },
   {
-    path: "/my",
+    path: "my",
     element: <MyPage />,
   },
   {
-    path: "/my/stamp",
+    path: "my/stamp",
     element: <StampPage />,
+  },
+  {
+    path: "my/badge",
+    element: <BadgePage />,
   },
 ]);
