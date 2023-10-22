@@ -12,16 +12,23 @@ export default function WorldMap() {
   return (
     <div className={s.wrapper}>
       <ComposableMap className={s.mapBox}>
-        <ZoomableGroup center={KOREA_COORD} zoom={9}>
+        <ZoomableGroup center={KOREA_COORD} zoom={7}>
           <Geographies geography="/features.json">
             {({ geographies }) =>
               geographies.map((geo) => {
-                console.log(geo);
+                const name = geo.properties.name;
+                console.log(name);
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    className={s.mapGeography}
+                    className={s.country}
+                    stroke="#444"
+                    strokeWidth={0.05}
+                    style={{
+                      default: { fill: "#dddddd" },
+                      hover: { fill: "#1472ff" },
+                    }}
                   />
                 );
               })
