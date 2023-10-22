@@ -1,15 +1,38 @@
 .gnbWrapper {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  width: 360px;
-  height: 64px;
-  background: slategray;
   display: flex;
+  width: 358px;
+  height: 60px;
+  padding: 0px 20px;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
+  gap: 22px;
+  flex-shrink: 0;
+  background: #fff;
+}
+.gnbBox {
+  width: 94px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+  flex: 1 0 0;
+}
+.font {
+  color: var(--black-aaa, #aaa);
+  text-align: center;
+  font-family: Pretendard Variable;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 15px */
+  letter-spacing: -0.2px;
 }
 
-.mapSection {}
+.focus {
+  color: var(--main-300-main, #4791ff);
+}
