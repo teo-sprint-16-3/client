@@ -1,5 +1,4 @@
 .wrapper {
-  margin: 0 auto;
   overflow: auto;
 }
 
@@ -13,5 +12,25 @@
 .country {
   &:focus {
     display: none;
+  }
+}
+
+.clickedCountry path {
+  fill: #1472ff !important;
+}
+
+.popup {
+  color: white;
+  width: 125px;
+  height: 50px;
+  background: #FF9595;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+
+  p {
+    font-size: 1.25rem;
+    word-break: break-all;
   }
 }
