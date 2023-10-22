@@ -5,6 +5,7 @@ import { FilterHeader } from "../../../components/Note/FilterHeader";
 import { SortingTab } from "../../../components/Note/SortingTab";
 import { WriteButton } from "../../../components/Note/common/WriteButton";
 import { NoteList } from "../../../components/Note/NoteList";
+import CreateNotePage from "../CreateNotePage";
 import GNB from "../../../components/GNB";
 
 import s from "./index.module.scss";
@@ -23,6 +24,7 @@ export function FilterNote() {
 
   return (
     <div className={s.container}>
+      {openModal && <CreateNotePage setOpenModal={setOpenModal} />}
       <FilterHeader title={params!} />
       <SortingTab
         category="all"
