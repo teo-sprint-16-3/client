@@ -145,6 +145,7 @@ export function NoteList({
   filter = "none",
 }: Props) {
   const [data, setData] = useState<any[]>([]);
+  const [isEmpty, setIsEmpty] = useState(false);
   const [isPopup, setIsPopup] = useState(false);
 
   function filterData(data: any[]) {
@@ -210,7 +211,12 @@ export function NoteList({
         break;
     }
     setData(data);
-  }, [category, sortingOrder]);
+    setIsEmpty(data.length === 0);
+  }, [category, sortingOrder, params]);
+
+  if (isEmpty) {
+    return <div className={s.notfound}>아직 작성된 페이지가 없어요</div>;
+  }
 
   return (
     <div className={s.container}>
