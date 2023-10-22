@@ -1,0 +1,49 @@
+@use "src/styles/variables" as v;
+
+.wrapper {
+  margin-top: 50%;
+}
+
+.logoBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.introLogo {
+  width: 200px;
+}
+
+.btnBox {
+  margin-top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 320px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.loginBtn {
+  background: v.$MAIN-400;
+  color: v.$BLACK-FFF;
+
+  @include v.headline3;
+}
+
+.exploreBtn {
+  background: v.$BLACK-FFF;
+
+  span {
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+
+    @include v.body1;
+  }
+
+}
