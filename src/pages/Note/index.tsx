@@ -1,8 +1,13 @@
-import { Header } from "../../components/Note/Header";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { NoteHeader } from "../../components/Note/NoteHeader";
+import { FilterHeader } from "../../components/Note/FilterHeader";
 import { CategoryTab } from "../../components/Note/CategoryTab";
 import { SortingTab } from "../../components/Note/SortingTab";
 import { NoteList } from "../../components/Note/NoteList";
 import { WriteButton } from "../../components/Note/common/WriteButton";
+import GNB from "../../components/GNB";
 import { useRecoilState } from "recoil";
 import {
   focusMapState,
@@ -13,6 +18,8 @@ import {
 import s from "./index.module.scss";
 
 export function Note() {
+  const [count, setCount] = useState(1);
+
   const [focusMap, setFocusMap] = useRecoilState(focusMapState);
   const [focusNote, setFocusNote] = useRecoilState(focusNoteState);
   const [focusMy, setFocusMy] = useRecoilState(focusMyState);
@@ -22,14 +29,19 @@ export function Note() {
 
   return (
     <div className={s.container}>
-      <Header />
+      <NoteHeader />
+      <FilterHeader title="몽골" />
       <CategoryTab />
+      <SortingTab />
       <div className={s.wrapper}>
-        <SortingTab />
-        <NoteList />
+        {count === 0 ? (
+          <div className={s.notfound}>아직 작성된 페이지가 없어요</div>
+        ) : (
+          <NoteList />
+        )}
         <WriteButton />
       </div>
-      {/* <GNB /> */}
+      <GNB />
     </div>
   );
 }
