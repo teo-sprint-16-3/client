@@ -1,6 +1,10 @@
 @use "src/styles/variables" as v;
 
 .wrapper {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  z-index: 50;
   width: 310px;
   display: flex;
   flex-direction: column;
