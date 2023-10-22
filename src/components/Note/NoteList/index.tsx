@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { NoteSummary } from "./NoteSummary";
 import { CountrySummary } from "./CountrySummary";
 import { YearSummary } from "./YearSummary";
+import Popup from "../../common/Popup";
 
 import s from "./index.module.scss";
 
@@ -144,6 +145,7 @@ export function NoteList({
   filter = "none",
 }: Props) {
   const [data, setData] = useState<any[]>([]);
+  const [isPopup, setIsPopup] = useState(false);
 
   function filterData(data: any[]) {
     if (filter === "none") {
@@ -214,7 +216,7 @@ export function NoteList({
     <div className={s.container}>
       {category === "all" &&
         data.map(({ ...props }, index) => (
-          <NoteSummary key={index} {...props} />
+          <NoteSummary key={index} setIsPopup={setIsPopup} {...props} />
         ))}
       {category === "country" &&
         data.map(({ ...props }, index) => (
@@ -224,6 +226,9 @@ export function NoteList({
         data.map(({ ...props }, index) => (
           <YearSummary key={index} {...props} />
         ))}
+      {isPopup && (
+        <Popup title="노트 상세조회 기능 준비중" setIsPopup={setIsPopup} />
+      )}
     </div>
   );
 }
