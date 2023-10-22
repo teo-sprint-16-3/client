@@ -1,7 +1,8 @@
 import { Header } from "../../components/Note/Header";
-import { TripGrid } from "../../components/Note/TripGrid";
+import { CategoryTab } from "../../components/Note/CategoryTab";
+import { SortingTab } from "../../components/Note/SortingTab";
+import { NoteList } from "../../components/Note/NoteList";
 import { WriteButton } from "../../components/Note/common/WriteButton";
-import { Navbar } from "../../components/Note/Navbar";
 import { useRecoilState } from "recoil";
 import {
   focusMapState,
@@ -22,9 +23,13 @@ export function Note() {
   return (
     <div className={s.container}>
       <Header />
-      <TripGrid />
-      <WriteButton />
-      {/* <Navbar /> */}
+      <CategoryTab />
+      <div className={s.wrapper}>
+        <SortingTab />
+        <NoteList />
+        <WriteButton />
+      </div>
+      {/* <GNB /> */}
     </div>
   );
 }

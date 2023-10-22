@@ -1,0 +1,41 @@
+.container {
+  width: 320px;
+  height: 42px;
+  margin: 20px;
+
+  display: flex;
+}
+
+.sortingTab {
+  width: 160px;
+  height: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  color: var(--black-222, #222);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+
+  background-color: #fff;
+}
+
+.sortingTab.left {
+  border-radius: 6px 0 0 6px;
+}
+
+.sortingTab.right {
+  border-radius: 0 6px 6px 0;
+}
+
+.sortingTab.active {
+  color: var(--black-fff, #fff);
+  background-color: var(--main-400, #1472ff);
+}
