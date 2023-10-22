@@ -28,7 +28,7 @@ export function NoteSummary({
   return (
     <div className={s.container}>
       <div className={s.titleWrapper}>
-        <div className={s.tagWrapper}>
+        <div className={s.tagChipWrapper}>
           <div className={`${s.tag} ${s.year}`}>{year}</div>
           <div className={`${s.tag} ${s.country}`}>{country}</div>
           <img className={s.flag} src={flag} alt="국기 이미지" />
