@@ -1,14 +1,15 @@
 .container {
   width: 68px;
   height: 68px;
+  bottom: 80px;
+  right: 20px;
 
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
+  cursor: pointer;
 }
 
 .wrapper {
