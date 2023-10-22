@@ -1,12 +1,12 @@
 import SubmitButton from "../../../components/common/Buttons/SubmitButton";
-import Container from "../../../components/note/common/Container";
-import BgmInput from "../../../components/note/BgmInput";
-import DateInput from "../../../components/note/DateInput";
-import LocationInput from "../../../components/note/LocationInput";
-import PictureInput from "../../../components/note/PictureInput";
-import TextInput from "../../../components/note/TextInput";
-import TitleInput from "../../../components/note/TitleInput";
-import Header from "../../../components/note/common/Header";
+import Container from "../../../components/Note/common/Container";
+import BgmInput from "../../../components/Note/BgmInput";
+import DateInput from "../../../components/Note/DateInput";
+import LocationInput from "../../../components/Note/LocationInput";
+import PictureInput from "../../../components/Note/PictureInput";
+import TextInput from "../../../components/Note/TextInput";
+import TitleInput from "../../../components/Note/TitleInput";
+import Header from "../../../components/Note/common/Header";
 
 export default function CreateNotePage() {
   return (
@@ -18,7 +18,6 @@ export default function CreateNotePage() {
       <BgmInput />
       <PictureInput />
       <TextInput />
-
       <SubmitButton />
     </Container>
   );
