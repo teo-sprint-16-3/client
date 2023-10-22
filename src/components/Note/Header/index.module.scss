@@ -1,0 +1,19 @@
+.container {
+  width: 360px;
+  height: 106px;
+  padding: 28px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #000;
+  font-family: Pretendard Variable;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.528px;
+}

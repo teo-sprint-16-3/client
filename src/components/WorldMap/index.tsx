@@ -7,13 +7,16 @@ export default function WorldMap() {
       <ComposableMap className={s.mapBox}>
         <Geographies geography="/features.json">
           {({ geographies }) =>
-            geographies.map((geo) => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                className={s.mapGeography}
-              />
-            ))
+            geographies.map((geo) => {
+              console.log(geo);
+              return (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  className={s.mapGeography}
+                />
+              );
+            })
           }
         </Geographies>
       </ComposableMap>
