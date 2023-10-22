@@ -7,20 +7,20 @@ export function SortingTab() {
 
   return (
     <div className={s.container}>
-      <div
+      <button
         className={`
         ${s.sortingTab} ${s.left} ${sortingOrder === "recent" ? s.active : ""}`}
         onClick={() => setSortingOrder("recent")}
       >
-        <span>최신순</span>
-      </div>
-      <div
+        최신순
+      </button>
+      <button
         className={`
         ${s.sortingTab} ${s.right} ${sortingOrder === "old" ? s.active : ""}`}
         onClick={() => setSortingOrder("old")}
       >
         오래된순
-      </div>
+      </button>
     </div>
   );
 }
