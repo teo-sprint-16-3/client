@@ -1,3 +1,8 @@
-.container {
+.bottomSheetOpen {
+  background: #d9d9dd;
+  pointer-events: none;
+}
+
+.noteContent {
   padding: 10px 20px;
 }
