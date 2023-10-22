@@ -9,6 +9,8 @@ import s from "./index.module.scss";
 interface Props {
   category: string;
   sortingOrder: string;
+  params?: string;
+  filter?: string;
 }
 
 // 이거 NoteSummary의 Props와 type 겹치는데 원래는 별도의 types 폴더에 빼는게 좋음
@@ -135,20 +137,38 @@ function compareDate(date1: Date, date2: Date, isAscending: boolean) {
   }
 }
 
-export function NoteList({ category, sortingOrder }: Props) {
+export function NoteList({
+  category,
+  sortingOrder,
+  params,
+  filter = "none",
+}: Props) {
   const [data, setData] = useState<any[]>([]);
+
+  function filterData(data: any[]) {
+    if (filter === "none") {
+      return data;
+    }
+    if (filter === "year") {
+      return data.filter((item) => item.year === parseInt(params!, 10));
+    }
+    if (filter === "country") {
+      return data.filter((item) => item.country === params);
+    }
+  }
 
   function getNoteSummary() {
     const data = mockData.slice();
+    const filteredData = filterData(data);
 
-    data.sort((a, b) => {
+    filteredData!.sort((a, b) => {
       const date1 = new Date(getStartDate(a.date));
       const date2 = new Date(getStartDate(b.date));
 
       return compareDate(date1, date2, sortingOrder === "ascending");
     });
 
-    return data;
+    return filteredData;
   }
 
   // TODO: mockData 기반으로 로직 다시 구현
@@ -178,7 +198,7 @@ export function NoteList({ category, sortingOrder }: Props) {
 
     switch (category) {
       case "all":
-        data = getNoteSummary();
+        data = getNoteSummary()!;
         break;
       case "country":
         data = getCountrySummary();
@@ -193,11 +213,17 @@ export function NoteList({ category, sortingOrder }: Props) {
   return (
     <div className={s.container}>
       {category === "all" &&
-        data.map(({ ...props }) => <NoteSummary {...props} />)}
+        data.map(({ ...props }, index) => (
+          <NoteSummary key={index} {...props} />
+        ))}
       {category === "country" &&
-        data.map(({ ...props }) => <CountrySummary {...props} />)}
+        data.map(({ ...props }, index) => (
+          <CountrySummary key={index} {...props} />
+        ))}
       {category === "year" &&
-        data.map(({ ...props }) => <YearSummary {...props} />)}
+        data.map(({ ...props }, index) => (
+          <YearSummary key={index} {...props} />
+        ))}
     </div>
   );
 }

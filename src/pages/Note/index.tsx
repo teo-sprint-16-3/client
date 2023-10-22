@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 import { NoteHeader } from "../../components/Note/NoteHeader";
-import { FilterHeader } from "../../components/Note/FilterHeader";
+
 import { CategoryTab } from "../../components/Note/CategoryTab";
 import { SortingTab } from "../../components/Note/SortingTab";
 import { NoteList } from "../../components/Note/NoteList";
@@ -22,8 +21,6 @@ export function Note() {
   const [category, setCategory] = useState("all");
   const [sortingOrder, setSortingOrder] = useState("descending");
 
-  // 임시
-  const [isEmpty, setIsEmpty] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   console.log(openModal);
 
@@ -55,11 +52,7 @@ export function Note() {
         handleSortingOrder={handleSortingOrder}
       />
       <div className={s.wrapper}>
-        {isEmpty ? (
-          <div className={s.notfound}>아직 작성된 페이지가 없어요</div>
-        ) : (
-          <NoteList category={category} sortingOrder={sortingOrder} />
-        )}
+        <NoteList category={category} sortingOrder={sortingOrder} />
         <WriteButton openModal={openModal} setOpenModal={setOpenModal} />
       </div>
       <GNB />
