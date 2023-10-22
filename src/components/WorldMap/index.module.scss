@@ -1,0 +1,21 @@
+.wrapper {
+  overflow: auto;
+}
+
+.mapBox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 500px;
+  height: 100vh;
+}
+
+.country {
+  &:focus {
+    display: none;
+  }
+}
+
+.clickedCountry path {
+  fill: #1472ff !important;
+}
+
