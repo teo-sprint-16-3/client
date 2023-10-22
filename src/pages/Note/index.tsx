@@ -23,7 +23,7 @@ export function Note() {
   const [sortingOrder, setSortingOrder] = useState("descending");
 
   // 임시
-  const [count, setCount] = useState(10);
+  const [isEmpty, setIsEmpty] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   console.log(openModal);
 
@@ -55,7 +55,7 @@ export function Note() {
         handleSortingOrder={handleSortingOrder}
       />
       <div className={s.wrapper}>
-        {count === 0 ? (
+        {isEmpty ? (
           <div className={s.notfound}>아직 작성된 페이지가 없어요</div>
         ) : (
           <NoteList category={category} sortingOrder={sortingOrder} />
