@@ -7,18 +7,44 @@ import PictureInput from "../../../components/Note/PictureInput";
 import TextInput from "../../../components/Note/TextInput";
 import TitleInput from "../../../components/Note/TitleInput";
 import Header from "../../../components/Note/common/Header";
+import { useState } from "react";
+import BottomSheet from "../../../components/Note/common/BottomSheet";
 
 export default function CreateNotePage() {
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+  const [bottomSheetContent, setBottomSheetContent] = useState(null);
+
+  const handleBottomSheetOpen = (content: any): void => {
+    setBottomSheetContent(content);
+    setIsBottomSheetOpen(true);
+  };
+
+  const handleBottomSheetClose = () => {
+    setIsBottomSheetOpen(false);
+  };
+
   return (
-    <Container>
-      <Header />
-      <TitleInput />
-      <DateInput />
-      <LocationInput />
-      <BgmInput />
-      <PictureInput />
-      <TextInput />
-      <SubmitButton />
-    </Container>
+    <>
+      <Container isBottomSheetOpen={isBottomSheetOpen}>
+        <Header />
+        <TitleInput />
+        <DateInput onSelectCountry={handleBottomSheetOpen} />
+        <LocationInput onSelectCountry={handleBottomSheetOpen} />
+        <BgmInput />
+        <PictureInput />
+        <TextInput />
+        <SubmitButton />
+      </Container>
+      <div>
+        {isBottomSheetOpen && (
+          <BottomSheet
+            title="Bottom Sheet Title"
+            onClose={handleBottomSheetClose}
+          >
+            {bottomSheetContent}
+          </BottomSheet>
+        )}
+      </div>
+    </>
   );
 }

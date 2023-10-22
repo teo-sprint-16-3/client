@@ -1,0 +1,36 @@
+.bottomSheetConatiner {
+  position: fixed;
+  width: 360px;
+  height: 480px;
+  bottom: 0;
+  z-index: 11;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #fff;
+}
+
+.bottomSheetContent {
+  padding: 10px 20px 0;
+}
+
+.bottomSheetHeader {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottomSheetBody {
+  height: 370px;
+}
+
+.bottomSheetFooter {
+}
+
+.bottomSheetSaveButton {
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  background-color: blue;
+}
