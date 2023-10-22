@@ -1,9 +1,7 @@
 import { Header } from "../../components/Note/Header";
 import { CategoryTab } from "../../components/Note/CategoryTab";
 import { SortingTab } from "../../components/Note/SortingTab";
-import { TripGrid } from "../../components/Note/TripGrid";
-import { WriteButton } from "../../components/Note/common/WriteButton";
-import GNB from "../../components/GNB";
+import { NoteList } from "../../components/Note/NoteList";
 
 import s from "./index.module.scss";
 
@@ -14,7 +12,7 @@ export function Note() {
       <CategoryTab />
       <div className={s.wrapper}>
         <SortingTab />
-        {/* <TripGrid /> */}
+        <NoteList />
         {/* <WriteButton /> */}
       </div>
       {/* <GNB /> */}
