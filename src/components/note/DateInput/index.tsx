@@ -1,13 +1,14 @@
+import Label from "../common/Label";
 import s from "./index.module.scss";
 
-export default function DateInput({ onSelectCountry }) {
+export default function DateInput({ onSelectDate }) {
   const handleSelectDate = () => {
-    onSelectCountry();
+    onSelectDate();
   };
 
   return (
     <div className={s.dateGroup}>
-      <label htmlFor="dateInput">날짜*</label>
+      <Label htmlFor="dateSelect" text="날짜" isRequired={true} />
       <div className={s.calendarGroup}>
         <button
           id="dateInput"
@@ -16,6 +17,7 @@ export default function DateInput({ onSelectCountry }) {
         >
           시작일
         </button>
+        {/* <span className={s.separator}>-</span> */}
         <button
           id="dateInput"
           className={s.dateButton}
