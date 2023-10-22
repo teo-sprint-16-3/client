@@ -1,6 +1,8 @@
 import s from "./index.module.scss";
 
 import { NoteSummary } from "./NoteSummary";
+import { CountrySummary } from "./CountrySummary";
+import { YearSummary } from "./YearSummary";
 
 export function NoteList() {
   return (
@@ -30,6 +32,37 @@ export function NoteList() {
           flag="/src/assets/icons/korea.png"
           title="넘넘 즐거웠던 경주여행 3"
           date="2022.05.08-2023.05.15"
+        />
+        <CountrySummary
+          flag="/src/assets/icons/mongolian-state.png"
+          name="몽골"
+          count={13}
+        />
+        <CountrySummary
+          flag="/src/assets/icons/korea.png"
+          name="대한민국"
+          count={1}
+        />
+        <YearSummary
+          year={2023}
+          flags={[
+            "/src/assets/icons/mongolian-state.png",
+            "/src/assets/icons/korea.png",
+            "/src/assets/icons/korea.png",
+            "/src/assets/icons/korea.png",
+            "/src/assets/icons/korea.png",
+            "/src/assets/icons/korea.png",
+            "/src/assets/icons/korea.png",
+          ]}
+          count={7}
+        />
+        <YearSummary
+          year={2023}
+          flags={[
+            "/src/assets/icons/mongolian-state.png",
+            "/src/assets/icons/korea.png",
+          ]}
+          count={2}
         />
       </div>
     </div>
