@@ -1,14 +1,13 @@
 import { useRef, useEffect } from "react";
-import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
 
-import styles from "./index.module.scss";
+import s from "./index.module.scss";
+import shareKakaotalk from "./util/shareKakaotalk";
 
 const { Kakao }: any = window;
 
 const My = () => {
   const screenRef = useRef<HTMLDivElement>(null);
-  const localUrl = "http://127.0.0.1:5173/my";
 
   useEffect(() => {
     Kakao.cleanup();
@@ -16,81 +15,28 @@ const My = () => {
     console.log(Kakao.isInitialized());
   }, []);
 
-  const dataURLtoFile = (dataurl: string, filename: string) => {
-    const arr = dataurl.split(",");
-    const mime = arr[0].match(/:(.*?);/)![1];
-    const bstr = atob(arr[1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], filename, { type: mime });
-  };
-
-  const handleDownload = async () => {
+  const handleDownload = () => {
     if (!screenRef.current) return;
 
-    try {
-      let imgUrl;
-      const screen = screenRef.current;
-      const canvas = await html2canvas(screen, { scale: 2 });
-      const url = canvas.toDataURL("image.png");
-      const file = new Array(dataURLtoFile(url, "index"));
-
-      await Kakao.Share.uploadImage({
-        file: file,
-      })
-        .then(function (res: any) {
-          imgUrl = res.infos.original.url;
-          console.log(res.infos.original.url);
-        })
-        .catch(function (err: any) {
-          console.log(err);
-        });
-
-      await Kakao.Share.sendDefault({
-        objectType: "feed",
-        content: {
-          title: "릿의 뱃지",
-          description: "릿의 여행기록입니다.",
-          imageUrl: imgUrl,
-          link: {
-            mobileWebUrl: localUrl,
-          },
-        },
-        buttons: [
-          {
-            title: "나도 세어봤 이용하러가기",
-            link: {
-              mobileWebUrl: localUrl,
-            },
-          },
-        ],
-      }).catch((err: any) => {
-        console.log(err);
-      });
-    } catch (error) {
-      console.error("Error converting div to image:", error);
-    }
+    shareKakaotalk(screenRef);
   };
 
   return (
-    <section className={styles.container}>
-      <h1 className={styles.tit}>마이페이지</h1>
-      <div className={styles.contents} ref={screenRef}>
-        <div className={styles.myImg}>
+    <section className={s.container}>
+      <h1 className={s.tit}>마이페이지</h1>
+      <div className={s.contents} ref={screenRef}>
+        <div className={s.myImg}>
           <span>사진</span>
         </div>
-        <div className={styles.infoWrap}>
-          <p className={styles.nickname}>
+        <div className={s.infoWrap}>
+          <p className={s.nickname}>
             용맹한 여행자 <strong>닉네임</strong>
           </p>
-          <span className={styles.badgeNotice}>
+          <span className={s.badgeNotice}>
             0번 더 여행시 <strong>대륙의 정복자</strong> 뱃지를 얻을 수 있어요
           </span>
         </div>
-        <div className={styles.statWrap}>
+        <div className={s.statWrap}>
           <dl>
             <dt>총 여행국가</dt>
             <dd>
@@ -111,11 +57,11 @@ const My = () => {
           </dl>
         </div>
       </div>
-      <Link to="/" className={styles.myBadgeStatus}>
-        <div className={styles.badgeImg} />
+      <Link to="/" className={s.myBadgeStatus}>
+        <div className={s.badgeImg} />
         <span>획득 뱃지</span>
       </Link>
-      <button className={styles.shareBtn} onClick={handleDownload}>
+      <button className={s.shareBtn} onClick={handleDownload}>
         공유하기 btn
       </button>
     </section>
