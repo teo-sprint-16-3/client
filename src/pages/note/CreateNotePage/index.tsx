@@ -7,7 +7,7 @@ import PictureInput from "../../../components/Note/PictureInput";
 import TextInput from "../../../components/Note/TextInput";
 import TitleInput from "../../../components/Note/TitleInput";
 import Header from "../../../components/Note/common/Header";
-import { useState, KeyboardEvent } from "react";
+import { useState, KeyboardEvent, useEffect } from "react";
 import BottomSheet from "../../../components/Note/common/BottomSheet";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,6 +18,7 @@ import CountryInput from "../../../components/Note/CountryInput";
 
 interface NoteInputForm {
   title: string;
+  // TODO: 바텀시트 구현 이후에 처리 예정
   // date: { startDate: string; endDate: string };
   // country: { name: string; flag?: string };
   location?: string;
@@ -48,6 +49,7 @@ export default function CreateNotePage() {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [bottomSheetContent, setBottomSheetContent] = useState(null);
   const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
+  const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
 
   const useFormReturn = useForm({
     resolver: yupResolver(notePostSchema),
@@ -77,6 +79,7 @@ export default function CreateNotePage() {
     console.log("@@@", filteredFileUrls);
     const noteData = {
       title: data.title,
+      // TODO: 바텀시트 구현 이후에 처리 예정
       // date: { startDate: data.date.startDate, endDate: data.date.endDate },
       // country: { name: data.country.name, flag: data.country.flag },
       // location: data.location ?? "",
@@ -86,6 +89,8 @@ export default function CreateNotePage() {
     };
 
     console.log("제출완료", noteData);
+
+    // TODO: 수정 기능
     // if(isEdit){
     //   updateNoteSubmit(noteData)
     // } else {
@@ -104,6 +109,16 @@ export default function CreateNotePage() {
     }
   };
 
+  const title = useFormReturn.watch("title");
+  // const date = useFormReturn.watch("date");
+  // const country = useFormReturn.watch("country");
+
+  useEffect(() => {
+    if (title) {
+      setSubmitButtonDisable(false);
+    }
+  }, [title]);
+
   return (
     <>
       <Container isBottomSheetOpen={isBottomSheetOpen}>
@@ -119,7 +134,7 @@ export default function CreateNotePage() {
           <BgmInput onSearchBgm={handleBottomSheetOpen} />
           <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
           <TextInput useForm={useFormReturn} />
-          <SubmitButton />
+          <SubmitButton disabled={submitButtonDisable} />
         </form>
       </Container>
 
