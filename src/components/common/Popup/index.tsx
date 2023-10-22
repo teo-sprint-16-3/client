@@ -12,14 +12,17 @@ export default function Popup({
   setIsPopup,
 }: PopupProps) {
   return (
-    <div className={s.wrapper}>
-      <div className={s.titleBox}>
-        <h2 className={s.title}>{title}</h2>
-        <h3 className={s.subtitle}>{subTitle}</h3>
+    <>
+      <div className={s.overlay}></div>
+      <div className={s.wrapper}>
+        <div className={s.titleBox}>
+          <h2 className={s.title}>{title}</h2>
+          <h3 className={s.subtitle}>{subTitle}</h3>
+        </div>
+        <button onClick={() => setIsPopup(false)} className={s.confirmBtn}>
+          확인
+        </button>
       </div>
-      <button onClick={() => setIsPopup(false)} className={s.confirmBtn}>
-        확인
-      </button>
-    </div>
+    </>
   );
 }
