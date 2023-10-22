@@ -1,5 +1,22 @@
 .header {
   display: flex;
-  justify-content: center;
+  width: 358px;
+  height: 54px;
+  padding: 10px 20px;
+  justify-content: space-between;
   align-items: center;
+  background: #fff;
+}
+
+.title {
+  color: #000;
+
+  text-align: center;
+  /* headline/h2 */
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 27px */
+  letter-spacing: -0.18px;
 }
