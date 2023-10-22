@@ -1,0 +1,15 @@
+.container {
+  width: 79px;
+  height: 79px;
+
+  position: absolute;
+  bottom: 72px;
+  right: 30px;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

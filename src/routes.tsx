@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Sample from "./components/Sample";
+import { Note } from "./pages/Note";
 import MyPage from "./pages/MyPage";
+import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
-import CreateNotePage from "./pages/note/CreateNotePage";
+import CreateNotePage from "./pages/Note/CreateNotePage";
 
 export const router = createBrowserRouter([
   {
@@ -11,8 +12,8 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/sample",
-    element: <Sample />,
+    path: "/note",
+    element: <Note />,
   },
   {
     path: "/map",
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/my",
     element: <MyPage />,
+  },
+  {
+    path: "/my/stamp",
+    element: <StampPage />,
   },
 ]);

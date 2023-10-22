@@ -1,0 +1,19 @@
+.wrapper {
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.mapBox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 500px;
+  height: 100vh;
+}
+
+.mapGeography {
+  fill: #d9d9d9;
+
+  &:hover {
+    fill: red;
+  }
+}
