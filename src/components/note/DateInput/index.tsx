@@ -1,12 +1,28 @@
 import s from "./index.module.scss";
 
-export default function DateInput() {
+export default function DateInput({ onSelectCountry }) {
+  const handleSelectDate = () => {
+    onSelectCountry();
+  };
+
   return (
     <div className={s.dateGroup}>
       <label htmlFor="dateInput">날짜*</label>
       <div className={s.calendarGroup}>
-        <input className={s.dateInput} type="date" id="dateInput" />
-        <input className={s.dateInput} type="date" id="dateInput" />
+        <button
+          id="dateInput"
+          className={s.dateButton}
+          onClick={handleSelectDate}
+        >
+          시작일
+        </button>
+        <button
+          id="dateInput"
+          className={s.dateButton}
+          onClick={handleSelectDate}
+        >
+          종료일
+        </button>
       </div>
     </div>
   );
