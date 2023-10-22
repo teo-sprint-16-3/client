@@ -17,14 +17,20 @@ interface ClickedPosType {
 
 export default function WorldMap() {
   const [currentCountryName, setCurrentCountryName] = useState<string>("");
+  const [currentKorName, setCurrentKorName] = useState("");
   const [clickedPos, setClickedPos] = useState<ClickedPosType>({
     y: 0,
     x: 0,
   });
   const [pointBoxOn, setPointBoxOn] = useState(false);
-  const handleClickCountry = (e: React.MouseEvent, name: string) => {
+  const handleClickCountry = (
+    e: React.MouseEvent,
+    name: string,
+    korName: string,
+  ) => {
     e.stopPropagation();
     setCurrentCountryName(name);
+    setCurrentKorName(korName);
     setClickedPos({
       y: e.nativeEvent.offsetY,
       x: e.nativeEvent.offsetX,
@@ -40,12 +46,14 @@ export default function WorldMap() {
             {({ geographies }) =>
               geographies.map((geo) => {
                 const countryName = geo.properties.name;
-                // const countryKorName = geo.properties.korName;
+                const countryKorName = geo.properties.korName;
                 const isClicked = currentCountryName === countryName;
 
                 return (
                   <Geography
-                    onClick={(e) => handleClickCountry(e, countryName)}
+                    onClick={(e) =>
+                      handleClickCountry(e, countryName, countryKorName)
+                    }
                     key={geo.rsmKey}
                     geography={geo}
                     className={[
@@ -69,7 +77,7 @@ export default function WorldMap() {
         <CountryPopup
           countryName={currentCountryName}
           clickedPos={clickedPos}
-          countryKorName="한글 나라이름!" // TODO: 채우기
+          countryKorName={currentKorName} // TODO: 채우기
         />
       )}
     </div>

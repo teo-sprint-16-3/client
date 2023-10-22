@@ -44,7 +44,7 @@ export default function CountryPopup({
         top: clickedPos.y + 1 + "px",
       }}
     >
-      <p>{countryName}</p>
+      <p>{countryKorName}</p>
     </div>
   );
 }
