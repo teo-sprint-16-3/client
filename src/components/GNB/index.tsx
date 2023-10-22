@@ -1,3 +1,10 @@
+import { useRecoilState } from "recoil";
+import {
+  focusMapState,
+  focusNoteState,
+  focusMyState,
+} from "../../recoil/sample/atom";
+
 import MapPinBlue from "../../assets/icons/mapPinBlue.svg";
 import NoteBlue from "../../assets/icons/noteBlue.svg";
 import MyBlue from "../../assets/icons/myBlue.svg";
@@ -7,12 +14,20 @@ import MyGray from "../../assets/icons/myGray.svg";
 import s from "./index.module.scss";
 
 export default function GNB() {
-  const focusMap = false;
-  const focusNote = false;
-  const focusMy = false;
+  const [focusMap, setFocusMap] = useRecoilState(focusMapState);
+  const [focusNote, setFocusNote] = useRecoilState(focusNoteState);
+  const [focusMy, setFocusMy] = useRecoilState(focusMyState);
+
   return (
     <div className={s.gnbWrapper}>
-      <div className={s.gnbBox}>
+      <div
+        className={s.gnbBox}
+        onClick={() => {
+          if (!focusMap) setFocusMap(!focusMap);
+          if (focusNote) setFocusNote(!focusNote);
+          if (focusMy) setFocusMy(!focusMy);
+        }}
+      >
         {focusMap ? (
           <img src={MapPinBlue} alt="map icon focus" />
         ) : (
@@ -22,7 +37,14 @@ export default function GNB() {
           지도
         </div>
       </div>
-      <div className={s.gnbBox}>
+      <div
+        className={s.gnbBox}
+        onClick={() => {
+          if (focusMap) setFocusMap(!focusMap);
+          if (!focusNote) setFocusNote(!focusNote);
+          if (focusMy) setFocusMy(!focusMy);
+        }}
+      >
         {focusNote ? (
           <img src={NoteBlue} alt="note icon focus" />
         ) : (
@@ -32,7 +54,14 @@ export default function GNB() {
           노트
         </div>
       </div>
-      <div className={s.gnbBox}>
+      <div
+        className={s.gnbBox}
+        onClick={() => {
+          if (focusMap) setFocusMap(!focusMap);
+          if (focusNote) setFocusNote(!focusNote);
+          if (!focusMy) setFocusMy(!focusMy);
+        }}
+      >
         {focusMy ? (
           <img src={MyBlue} alt="note icon focus" />
         ) : (
