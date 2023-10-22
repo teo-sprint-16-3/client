@@ -44,7 +44,6 @@ export function Note() {
   return (
     <div className={s.container}>
       <NoteHeader />
-      <FilterHeader title="몽골" />
       <CategoryTab category={category} handleCategory={handleCategory} />
       <SortingTab
         category={category}
@@ -55,7 +54,7 @@ export function Note() {
         {count === 0 ? (
           <div className={s.notfound}>아직 작성된 페이지가 없어요</div>
         ) : (
-          <NoteList />
+          <NoteList category={category} />
         )}
         <WriteButton />
       </div>
