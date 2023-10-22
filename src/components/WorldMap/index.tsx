@@ -5,10 +5,8 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-import { useRecoilState } from "recoil";
 import s from "./index.module.scss";
-import { countryNameState } from "../../recoil/country/atom.ts";
-import { isSavedName } from "../../utils";
+import CountryPopup from "../CountryPopup";
 
 const KOREA_COORD = [129, 37] as [number, number];
 
@@ -18,9 +16,7 @@ interface ClickedPosType {
 }
 
 export default function WorldMap() {
-  const [countryNameList, setCountryNameList] =
-    useRecoilState(countryNameState);
-  const [currentCountry, setCurrentCountry] = useState<string>("");
+  const [currentCountryName, setCurrentCountryName] = useState<string>("");
   const [clickedPos, setClickedPos] = useState<ClickedPosType>({
     y: 0,
     x: 0,
@@ -28,18 +24,12 @@ export default function WorldMap() {
   const [pointBoxOn, setPointBoxOn] = useState(false);
   const handleClickCountry = (e: React.MouseEvent, name: string) => {
     e.stopPropagation();
-    setCurrentCountry(name);
+    setCurrentCountryName(name);
     setClickedPos({
       y: e.nativeEvent.offsetY,
       x: e.nativeEvent.offsetX,
     });
     setPointBoxOn(true);
-  };
-
-  const countryNameSave = (name: string, korName: string) => {
-    if (!isSavedName(name, countryNameList)) {
-      setCountryNameList((currVal) => [...currVal, { name, korName }]);
-    }
   };
 
   return (
@@ -50,7 +40,8 @@ export default function WorldMap() {
             {({ geographies }) =>
               geographies.map((geo) => {
                 const countryName = geo.properties.name;
-                const isClicked = currentCountry === countryName;
+                // const countryKorName = geo.properties.korName;
+                const isClicked = currentCountryName === countryName;
 
                 return (
                   <Geography
@@ -75,16 +66,11 @@ export default function WorldMap() {
         </ZoomableGroup>
       </ComposableMap>
       {pointBoxOn && (
-        <div
-          className={s.popup}
-          style={{
-            position: "absolute",
-            left: clickedPos.x + 1 + "px",
-            top: clickedPos.y + 1 + "px",
-          }}
-        >
-          <p>{currentCountry}</p>
-        </div>
+        <CountryPopup
+          countryName={currentCountryName}
+          clickedPos={clickedPos}
+          countryKorName="한글 나라이름!" // TODO: 채우기
+        />
       )}
     </div>
   );
