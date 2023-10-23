@@ -10,6 +10,8 @@ export default function Intro() {
 
   return (
     <div className={s.wrapper}>
+      <div className={s.mainTitle}>세어봤</div>
+      <div className={s.subTitle}>세계 어디까지 가봤니</div>
       <div className={s.logoBox}>
         <img className={s.introLogo} src={introLogo} alt="세어봤" />
       </div>
