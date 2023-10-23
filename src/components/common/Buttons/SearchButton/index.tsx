@@ -9,7 +9,7 @@ interface SearchButtonProps {
 
 export default function SearchButton({ id, text, onClick }: SearchButtonProps) {
   return (
-    <button id={id} onClick={onClick} className={s.searchButton}>
+    <button type="button" id={id} onClick={onClick} className={s.searchButton}>
       <span className={s.inputText}>{text}</span>
       <img src={SearchIcon} alt="검색" />
     </button>
