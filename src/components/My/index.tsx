@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import s from "./index.module.scss";
@@ -6,10 +6,12 @@ import shareKakaotalk from "./util/shareKakaotalk";
 import Header from "../My/common/Header";
 import RigthArrowIcon from "../../assets/icons/rightArrow.svg";
 import DefaultProfile from "../../assets/icons/defaultProfile.svg";
+import Popup from "../common/Popup";
 
 const { Kakao }: any = window;
 
 const My = () => {
+  const [isPopup, setIsPopup] = useState(false);
   const screenRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,9 +25,14 @@ const My = () => {
     shareKakaotalk(screenRef);
   };
 
+  const handleOpenPopup = () => {
+    setIsPopup((prev) => !prev);
+  };
+
   return (
     <section className={s.container}>
       <Header title="마이페이지" />
+      {isPopup && <Popup setIsPopup={setIsPopup} />}
       <div className={s.contents} ref={screenRef}>
         <div className={s.myImg}>
           <img src={DefaultProfile} alt="프로필사진" />
@@ -50,9 +57,9 @@ const My = () => {
           <li>
             <ul className={s.statDetailWrap}>
               <li className={s.statBtn}>
-                <Link to="/">
+                <button type="button" onClick={handleOpenPopup}>
                   <span>653</span>일
-                </Link>
+                </button>
               </li>
               <li className={s.statGrade}>상위 42%</li>
               <li className={s.statTit}>총 여행일</li>
