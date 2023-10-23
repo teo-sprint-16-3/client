@@ -82,7 +82,7 @@ const My = () => {
         <span>획득 뱃지</span>
         <img src={RigthArrowIcon} alt="바로가기" />
       </Link>
-      <button className={s.shareBtn} onClick={handleDownload}>
+      <button className={s.shareBtn} onClick={handleOpenPopup}>
         <span>내 여행기록 공유하기</span>
       </button>
     </section>
