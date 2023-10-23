@@ -1,4 +1,4 @@
-@import '/src/styles/variables';
+@import "/src/styles/variables";
 
 .container {
   display: flex;
@@ -60,7 +60,8 @@
         align-items: center;
 
         .statBtn {
-          a {
+          a,
+          button {
             @include headline1;
             color: $BLACK-222;
 
@@ -85,7 +86,6 @@
         color: $BLACK-222;
       }
     }
-
   }
 
   .myBadgeStatus {

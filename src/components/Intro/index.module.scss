@@ -1,8 +1,35 @@
 @use "src/styles/variables" as v;
 
 .wrapper {
-  margin-top: 50%;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  height: 100vh;
   z-index: -1;
+  background: #fff;
+}
+
+.mainTitle {
+  display: flex;
+  justify-content: center;
+  font-family: "CWDangamAsac-Bold";
+  color: var(--main-300-main, #4791ff);
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.subTitle {
+  display: flex;
+  justify-content: center;
+  color: var(--main-200, #7aafff);
+  font-family: Pretendard Variable;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .logoBox {
@@ -12,11 +39,13 @@
 }
 
 .introLogo {
-  width: 200px;
+  margin-top: 30px;
+  width: 170px;
+  height: 219px;
 }
 
 .btnBox {
-  margin-top: 50%;
+  margin-top: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,5 +75,4 @@
 
     @include v.body1;
   }
-
 }
