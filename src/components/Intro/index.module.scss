@@ -1,8 +1,10 @@
 @use "src/styles/variables" as v;
 
 .wrapper {
-  margin-top: 50%;
+  padding-top: 50%;
+  height: 100vh;
   z-index: -1;
+  background: #fff;
 }
 
 .logoBox {
@@ -12,7 +14,8 @@
 }
 
 .introLogo {
-  width: 200px;
+  width: 170px;
+  height: 219px;
 }
 
 .btnBox {
@@ -46,5 +49,4 @@
 
     @include v.body1;
   }
-
 }
