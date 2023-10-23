@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import styles from "./index.module.scss";
-
+import defaultFlag from "../../assets/countryFlags/other.svg";
 interface StampProps {
   flag: string;
   name: string;
@@ -16,6 +16,10 @@ export default function Sample() {
     { flag: "", name: "대만" },
     { flag: "", name: "필리핀" },
   ];
+  function getImageUrl(flagName: string) {
+    return new URL(`../../assets/countryFlags/${flagName}`, import.meta.url)
+      .href;
+  }
   return (
     <div className={styles.container}>
       {stampList.length ? (
@@ -23,7 +27,15 @@ export default function Sample() {
           {stampList.map(({ flag, name }) => {
             return (
               <div className={styles.stampBox}>
-                <div className={styles.flag}></div>
+                <img
+                  src={
+                    getImageUrl(flag).split("/").reverse()[0] !== "undefined"
+                      ? getImageUrl(flag)
+                      : defaultFlag
+                  }
+                  alt={name}
+                  className={styles.flag}
+                />
                 <div className={styles.nameBox}>{name}</div>
               </div>
             );
