@@ -1,6 +1,5 @@
 import { useRecoilState } from "recoil";
 import { noteFormState } from "../../../recoil/post/atom";
-
 import SubmitButton from "../../../components/common/Buttons/SubmitButton";
 import Container from "../../../components/Note/common/Container";
 import BgmInput from "../../../components/Note/BgmInput";
@@ -11,19 +10,25 @@ import TextInput from "../../../components/Note/TextInput";
 import TitleInput from "../../../components/Note/TitleInput";
 import Header from "../../../components/Note/common/Header";
 import { useState, KeyboardEvent, useEffect } from "react";
-import BottomSheet from "../../../components/Note/common/BottomSheet";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { produce } from "immer";
 
 import * as yup from "yup";
 import CountryInput from "../../../components/Note/CountryInput";
+import Popup from "../../../components/common/Popup";
 
 interface NoteInputForm {
   title: string;
-  // TODO: 바텀시트 구현 이후에 처리 예정
-  // date: { startDate: string; endDate: string };
+  date: { startDate: string; endDate: string };
   // country: { name: string; flag?: string };
+  country: {
+    id: string;
+    properties: {
+      name: string;
+      korName: string;
+    };
+  };
   location?: string;
   bgm?: string;
   images?: string[];
@@ -55,9 +60,22 @@ const notePostSchema = yup.object({
 export default function CreateNotePage({ setOpenModal }: IProps) {
   const [formData, setFormData] = useRecoilState(noteFormState);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
-  const [bottomSheetContent, setBottomSheetContent] = useState(null);
+  // const [bottomSheetContent, setBottomSheetContent] = useState(null);
   const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
   const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
+  const [sheetContent, setSheetContent] = useState("");
+  const [date, setDate] = useState({
+    startDate: "",
+    endDate: "",
+  });
+  const [country, setCountry] = useState({
+    id: "",
+    properties: {
+      name: "",
+      korName: "",
+    },
+  });
+  const [isPopup, setIsPopup] = useState(false);
 
   const useFormReturn = useForm({
     resolver: yupResolver(notePostSchema),
@@ -65,8 +83,10 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     // defaultValues: {},
   });
 
-  const handleBottomSheetOpen = (content: any): void => {
-    setBottomSheetContent(content);
+  const title = useFormReturn.watch("title");
+
+  const handleBottomSheetOpen = (content: string) => {
+    setSheetContent(content);
     setIsBottomSheetOpen(true);
   };
 
@@ -84,19 +104,19 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
 
   const handleNoteSubmit: SubmitHandler<NoteInputForm> = (data) => {
     const filteredFileUrls = fileUrls.filter((file) => file !== "");
-    console.log("@@@", filteredFileUrls);
+
     const noteData = {
       title: data.title,
-      // TODO: 바텀시트 구현 이후에 처리 예정
-      // date: { startDate: data.date.startDate, endDate: data.date.endDate },
-      // country: { name: data.country.name, flag: data.country.flag },
-      // location: data.location ?? "",
+      date,
+      country,
+      location: data.location ?? "",
       bgm: data.bgm ?? "",
       images: filteredFileUrls ?? [],
       description: data.description ?? "",
     };
 
-    console.log("제출완료", noteData);
+    setFormData(noteData);
+    // console.log("제출완료", noteData);
 
     // TODO: 수정 기능
     // if(isEdit){
@@ -107,55 +127,53 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   };
 
   const onKeyDownSubmit = (event: KeyboardEvent<HTMLFormElement>) => {
-    const { id } = event.target as Element;
     if (event.key === "Enter") {
-      if (id === "desk-textarea") {
-        return;
-      }
-
       event.preventDefault();
     }
   };
 
-  const title = useFormReturn.watch("title");
-  // const date = useFormReturn.watch("date");
-  // const country = useFormReturn.watch("country");
-
   useEffect(() => {
-    if (title) {
+    if (title && Object.keys(date).length > 0 && country.id) {
       setSubmitButtonDisable(false);
     }
-  }, [title]);
+  }, [title, date, country]);
 
   return (
     <>
-      <Container isBottomSheetOpen={isBottomSheetOpen}>
+      <Container>
         <form
           onKeyDown={onKeyDownSubmit}
           onSubmit={useFormReturn.handleSubmit(handleNoteSubmit)}
         >
           <Header setOpenModal={setOpenModal} />
           <TitleInput useForm={useFormReturn} />
-          <DateInput onSelectDate={handleBottomSheetOpen} />
-          <CountryInput onSelectCountry={handleBottomSheetOpen} />
+          <DateInput
+            setDate={setDate}
+            sheetContent={sheetContent}
+            isBottomSheetOpen={isBottomSheetOpen}
+            onClose={handleBottomSheetClose}
+            onSelectDate={handleBottomSheetOpen}
+          />
+          <CountryInput
+            country={country}
+            setCountry={setCountry}
+            sheetContent={sheetContent}
+            isBottomSheetOpen={isBottomSheetOpen}
+            onClose={handleBottomSheetClose}
+            onSelectCountry={handleBottomSheetOpen}
+          />
           <LocationInput useForm={useFormReturn} />
-          <BgmInput onSearchBgm={handleBottomSheetOpen} />
+          <BgmInput
+            // onSearchBgm={handleBottomSheetOpen}
+            onSearchBgm={() => setIsPopup(true)}
+          />
           <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
           <TextInput useForm={useFormReturn} />
           <SubmitButton disabled={submitButtonDisable} />
         </form>
       </Container>
 
-      <div>
-        {isBottomSheetOpen && (
-          <BottomSheet
-            title="Bottom Sheet Title"
-            onClose={handleBottomSheetClose}
-          >
-            {bottomSheetContent}
-          </BottomSheet>
-        )}
-      </div>
+      {isPopup && <Popup title="BGM 기능 준비중" setIsPopup={setIsPopup} />}
     </>
   );
 }

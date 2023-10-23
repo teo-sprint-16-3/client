@@ -9,7 +9,14 @@ export const noteFormState = atom<INote>({
       startDate: "",
       endDate: "",
     },
-    country: { flag: "", name: "" },
+    // country: { flag: "", name: "" },
+    country: {
+      id: "string",
+      properties: {
+        name: "string",
+        korName: "string",
+      },
+    },
     location: "",
     bgm: "",
     images: [],

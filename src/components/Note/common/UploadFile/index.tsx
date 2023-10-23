@@ -50,7 +50,11 @@ export default function UploadFile({
             />
           </div>
         ) : (
-          <button className={s.uploadButton} onClick={handleUploadFile}>
+          <button
+            type="button"
+            className={s.uploadButton}
+            onClick={handleUploadFile}
+          >
             +
           </button>
         )}

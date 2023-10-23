@@ -5,7 +5,6 @@ interface SubmitButtonProps {
 }
 
 export default function SubmitButton({ disabled }: SubmitButtonProps) {
-  console.log("버튼 값", disabled);
   return (
     <div className={s.buttonContainer}>
       <button type="submit" className={s.submitButton} disabled={disabled}>
