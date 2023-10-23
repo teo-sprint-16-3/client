@@ -14,7 +14,7 @@ import {
   focusNoteState,
   focusMyState,
 } from "../../recoil/sample/atom";
-import GNB from "../../components/GNB";
+
 import s from "./index.module.scss";
 
 export function Note() {
