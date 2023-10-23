@@ -6,6 +6,7 @@ import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
 import CreateNotePage from "./pages/Note/CreateNotePage";
 import BadgePage from "./pages/MyPage/BadgePage";
+import { Suspense } from "react";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "my/badge",
-    element: <BadgePage />,
+    element: (
+      <Suspense>
+        <BadgePage />
+      </Suspense>
+    ),
   },
 ]);

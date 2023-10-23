@@ -5,6 +5,7 @@ import s from "./index.module.scss";
 import shareKakaotalk from "./util/shareKakaotalk";
 import Header from "../My/common/Header";
 import RigthArrowIcon from "../../assets/icons/rightArrow.svg";
+import DefaultProfile from "../../assets/icons/defaultProfile.svg";
 
 const { Kakao }: any = window;
 
@@ -14,7 +15,6 @@ const My = () => {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init("75c50c5dc28a7b915981b7342aa59a7b");
-    console.log(Kakao.isInitialized());
   }, []);
 
   const handleDownload = () => {
@@ -28,10 +28,7 @@ const My = () => {
       <Header title="마이페이지" />
       <div className={s.contents} ref={screenRef}>
         <div className={s.myImg}>
-          <img
-            src="https://github.com/teo-sprint-16-3/client/assets/68591616/32136282-3182-4690-8903-88888258bb48"
-            alt="프로필사진"
-          />
+          <img src={DefaultProfile} alt="프로필사진" />
         </div>
         <div className={s.infoWrap}>
           <h2 className={s.nickname}>소금</h2>
