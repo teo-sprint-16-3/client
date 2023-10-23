@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import s from "./index.module.scss";
 
 interface Props {
@@ -9,14 +11,24 @@ interface Props {
 const FLAG_MAX = 5;
 
 export function YearSummary({ year, flags, count }: Props) {
+  const navigate = useNavigate();
+
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={() => navigate(`/note/${year}`)}>
       <div className={s.flagWrapper}>
         <div className={s.text}>{year}</div>
         <div className={s.flagBox}>
-          {flags.slice(0, FLAG_MAX).map((flag, index) => (
-            <img key={index} className={s.flag} src={flag} alt="국기 이미지" />
-          ))}
+          {flags !== undefined &&
+            flags
+              .slice(0, FLAG_MAX)
+              .map((flag, index) => (
+                <img
+                  key={index}
+                  className={s.flag}
+                  src={flag}
+                  alt="국기 이미지"
+                />
+              ))}
         </div>
         {count > FLAG_MAX && (
           <div className={s.subtext}>+{count - FLAG_MAX}</div>

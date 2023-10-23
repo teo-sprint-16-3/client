@@ -1,0 +1,34 @@
+.container {
+  position: relative;
+  width: 360px;
+  height: 740px;
+
+  background-color: #ffffff;
+}
+
+.wrapper {
+  width: 360px;
+  height: 544px;
+
+  overflow-y: scroll;
+
+  background-color: var(--black-f-7-f-7-f-7, #f7f7f7);
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.notfound {
+  position: absolute;
+  top: 178px;
+  left: 98px;
+
+  color: var(--black-aaa, #aaa);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+}

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 import { NoteHeader } from "../../components/Note/NoteHeader";
-import { FilterHeader } from "../../components/Note/FilterHeader";
+
 import { CategoryTab } from "../../components/Note/CategoryTab";
 import { SortingTab } from "../../components/Note/SortingTab";
 import { NoteList } from "../../components/Note/NoteList";
@@ -19,8 +18,10 @@ import s from "./index.module.scss";
 import CreateNotePage from "./CreateNotePage";
 
 export function Note() {
+  const [category, setCategory] = useState("all");
+  const [sortingOrder, setSortingOrder] = useState("descending");
+
   const [openModal, setOpenModal] = useState(false);
-  const [count, setCount] = useState(1);
   console.log(openModal);
 
   const [focusMap, setFocusMap] = useRecoilState(focusMapState);
@@ -30,19 +31,28 @@ export function Note() {
   if (!focusNote) setFocusNote(!focusNote);
   if (focusMy) setFocusMy(!focusMy);
 
+  // 카테고리를 바꾸면 카테고리명이 바뀌고 정렬 순서가 내림차순으로 초기화됨
+  function handleCategory(category: string) {
+    setCategory(category);
+    setSortingOrder("descending");
+  }
+
+  function handleSortingOrder(order: string) {
+    setSortingOrder(order);
+  }
+
   return (
     <div className={s.container}>
       {openModal && <CreateNotePage setOpenModal={setOpenModal} />}
       <NoteHeader />
-      <FilterHeader title="몽골" />
-      <CategoryTab />
-      <SortingTab />
+      <CategoryTab category={category} handleCategory={handleCategory} />
+      <SortingTab
+        category={category}
+        sortingOrder={sortingOrder}
+        handleSortingOrder={handleSortingOrder}
+      />
       <div className={s.wrapper}>
-        {count === 0 ? (
-          <div className={s.notfound}>아직 작성된 페이지가 없어요</div>
-        ) : (
-          <NoteList />
-        )}
+        <NoteList category={category} sortingOrder={sortingOrder} />
         <WriteButton openModal={openModal} setOpenModal={setOpenModal} />
       </div>
       <GNB />
