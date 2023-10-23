@@ -1,0 +1,28 @@
+.dateGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+// .s.separator {
+//   display: flex;
+//   align-items: center;
+//   line-height: 1;
+// }
+
+.calendarGroup {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.dateButton {
+  padding: 10px 20px;
+  display: flex;
+  width: 147px;
+  height: 44px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: flex-start;
+}

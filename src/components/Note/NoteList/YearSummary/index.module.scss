@@ -1,0 +1,63 @@
+.container {
+  width: 320px;
+  height: 108px;
+  padding: 20px;
+  gap: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.flagWrapper {
+  gap: 8px;
+
+  display: flex;
+  align-items: center;
+}
+
+.flagBox {
+  gap: 4px;
+
+  display: flex;
+  align-items: center;
+}
+
+.flag {
+  width: 35px;
+  height: 21px;
+
+  border-radius: 4px;
+}
+
+.countWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text {
+  color: var(--black-222, #222);
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.2px;
+}
+
+.count {
+  color: var(--main-300-main, #4791ff);
+}
+
+.subtext {
+  color: var(--black-aaa, #aaa);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.28px;
+}

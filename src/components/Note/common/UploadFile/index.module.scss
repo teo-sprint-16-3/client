@@ -1,0 +1,29 @@
+.uploadContainer {
+  position: relative;
+
+  .uploadImage {
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    border-radius: 4px;
+  }
+
+  .deleteButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+
+  .uploadButton {
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+}
+
+.pictureInput {
+  display: none;
+}

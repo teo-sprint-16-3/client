@@ -1,0 +1,15 @@
+.pictureGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.pictureInput {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.uploadContainer {
+  display: flex;
+  gap: 8px;
+}
