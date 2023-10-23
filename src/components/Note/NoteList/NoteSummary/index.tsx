@@ -1,10 +1,6 @@
-import { useState } from "react";
-
 import calendarIcon from "../../../../assets/icons/calendar.svg";
 import locationIcon from "../../../../assets/icons/location.svg";
 import bgmIcon from "../../../../assets/icons/music.svg";
-
-import Popup from "../../../common/Popup";
 
 import s from "./index.module.scss";
 
@@ -17,6 +13,7 @@ interface Props {
   location?: string;
   bgm?: string;
   image?: string;
+  setIsPopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function NoteSummary({
@@ -28,9 +25,8 @@ export function NoteSummary({
   location,
   bgm,
   image,
+  setIsPopup,
 }: Props) {
-  const [isPopup, setIsPopup] = useState(false);
-
   return (
     <div className={s.container} onClick={() => setIsPopup(true)}>
       <div className={s.titleWrapper}>
@@ -64,9 +60,6 @@ export function NoteSummary({
           <img className={s.image} src={image} alt="여행 이미지" />
         )}
       </div>
-      {isPopup && (
-        <Popup title="노트 상세조회 기능 준비중" setIsPopup={setIsPopup} />
-      )}
     </div>
   );
 }
