@@ -6,3 +6,18 @@
   display: flex;
   flex-direction: column;
 }
+
+.notfound {
+  top: 364px;
+  left: 98px;
+
+  position: absolute;
+
+  color: var(--black-aaa, #aaa);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.3px;
+}
