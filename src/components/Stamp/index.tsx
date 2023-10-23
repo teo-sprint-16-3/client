@@ -9,12 +9,12 @@ interface StampProps {
 
 export default function Sample() {
   const stampList: StampProps[] = [
-    { flag: "", name: "한국" },
-    { flag: "", name: "중국" },
-    { flag: "", name: "미국" },
-    { flag: "", name: "일본" },
-    { flag: "", name: "대만" },
-    { flag: "", name: "필리핀" },
+    { flag: "South Korea.svg", name: "한국" },
+    { flag: "China.svg", name: "중국" },
+    { flag: "United States.svg", name: "미국" },
+    { flag: "Japan.svg", name: "일본" },
+    { flag: "Taiwan.svg", name: "대만" },
+    { flag: "Philippines.svg", name: "필리핀" },
   ];
   function getImageUrl(flagName: string) {
     return new URL(`../../assets/countryFlags/${flagName}`, import.meta.url)
