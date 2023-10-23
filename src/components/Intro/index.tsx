@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import introLogo from "../../assets/icons/introLogo.svg";
+import introLogo from "../../assets/icons/walkTheWorld.gif";
 import s from "./index.module.scss";
 import Popup from "../common/Popup";
 
@@ -10,6 +10,8 @@ export default function Intro() {
 
   return (
     <div className={s.wrapper}>
+      <div className={s.mainTitle}>세어봤</div>
+      <div className={s.subTitle}>세계 어디까지 가봤니</div>
       <div className={s.logoBox}>
         <img className={s.introLogo} src={introLogo} alt="세어봤" />
       </div>
