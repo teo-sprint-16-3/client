@@ -32,7 +32,7 @@ export default function CountryPopup({
 
   const handleClick = () => {
     countryNameSave(countryName, countryKorName);
-    navigate(`../note/${countryName}`);
+    navigate(`../note/${countryKorName}`);
   };
   return (
     <div
