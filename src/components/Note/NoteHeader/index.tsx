@@ -1,10 +1,9 @@
 import s from "./index.module.scss";
 
-export function Navbar() {
+export function NoteHeader() {
   return (
     <div className={s.container}>
-      <span>지도</span>
-      <span>마이페이지</span>
+      <div className={s.title}>노트</div>
     </div>
   );
 }

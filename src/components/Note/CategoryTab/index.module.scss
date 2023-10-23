@@ -1,0 +1,27 @@
+.container {
+  width: 360px;
+  height: 50px;
+  padding: 0 20px;
+
+  display: flex;
+}
+
+.categoryTab {
+  flex: 1;
+
+  color: var(--black-222, #222);
+  text-align: center;
+
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.18px;
+
+  border-bottom: 2px solid #fff;
+}
+
+.categoryTab.active {
+  border-bottom: 2px solid var(--main-400, #1472ff);
+}
