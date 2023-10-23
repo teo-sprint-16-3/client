@@ -1,25 +1,25 @@
 // 변수
 
 // Main Color
-$MAIN-500: #005AE0;
-$MAIN-400: #1472FF;
-$MAIN-300: #4791FF;
-$MAIN-200: #7AAFFF;
-$MAIN-100: #ADCEFF;
-$MAIN-050: #CCE0FF;
+$MAIN-500: #005ae0;
+$MAIN-400: #1472ff;
+$MAIN-300: #4791ff;
+$MAIN-200: #7aafff;
+$MAIN-100: #adceff;
+$MAIN-050: #cce0ff;
 
 // Black Color
 $BLACK-222: #222;
 $BLACK-666: #666;
-$BLACK-AAA: #AAA;
-$BLACK-DDD: #DDD;
-$BLACK-F2: #F2F2F2;
-$BLACK-F7: #F7F7F7;
-$BLACK-FFF: #FFF;
+$BLACK-AAA: #aaa;
+$BLACK-DDD: #ddd;
+$BLACK-F2: #f2f2f2;
+$BLACK-F7: #f7f7f7;
+$BLACK-FFF: #fff;
 
 // Point Color
-$POINT-1: #FF7F57;
-$POINT-2: #FFE2D8;
+$POINT-1: #ff7f57;
+$POINT-2: #ffe2d8;
 
 // Font Mixin
 @mixin display1 {
@@ -41,7 +41,7 @@ $POINT-2: #FFE2D8;
 @mixin headline1 {
   font-family: Pretendard;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 150%;
   letter-spacing: -1%;
 }

@@ -1,7 +1,25 @@
+@import "/src/styles/variables";
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 54px;
+
+  h2 {
+    @include headline1;
+    color: #000;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    img {
+      pointer-events: none;
+    }
+  }
 }

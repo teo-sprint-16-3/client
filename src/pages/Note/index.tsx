@@ -16,9 +16,12 @@ import {
 } from "../../recoil/sample/atom";
 
 import s from "./index.module.scss";
+import CreateNotePage from "./CreateNotePage";
 
 export function Note() {
+  const [openModal, setOpenModal] = useState(false);
   const [count, setCount] = useState(1);
+  console.log(openModal);
 
   const [focusMap, setFocusMap] = useRecoilState(focusMapState);
   const [focusNote, setFocusNote] = useRecoilState(focusNoteState);
@@ -29,6 +32,7 @@ export function Note() {
 
   return (
     <div className={s.container}>
+      {openModal && <CreateNotePage setOpenModal={setOpenModal} />}
       <NoteHeader />
       <FilterHeader title="몽골" />
       <CategoryTab />
@@ -39,7 +43,7 @@ export function Note() {
         ) : (
           <NoteList />
         )}
-        <WriteButton />
+        <WriteButton openModal={openModal} setOpenModal={setOpenModal} />
       </div>
       <GNB />
     </div>

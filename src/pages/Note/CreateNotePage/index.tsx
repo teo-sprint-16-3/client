@@ -1,3 +1,6 @@
+import { useRecoilState } from "recoil";
+import { noteFormState } from "../../../recoil/post/atom";
+
 import SubmitButton from "../../../components/common/Buttons/SubmitButton";
 import Container from "../../../components/Note/common/Container";
 import BgmInput from "../../../components/Note/BgmInput";
@@ -27,6 +30,10 @@ interface NoteInputForm {
   description?: string;
 }
 
+interface IProps {
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const notePostSchema = yup.object({
   // title: yup.string().required("제목을 입력해주세요."),
   // date: yup
@@ -45,7 +52,8 @@ const notePostSchema = yup.object({
   // location: yup.string().max(30, "최대 30글자까지 입력 가능합니다."),
 });
 
-export default function CreateNotePage() {
+export default function CreateNotePage({ setOpenModal }: IProps) {
+  const [formData, setFormData] = useRecoilState(noteFormState);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [bottomSheetContent, setBottomSheetContent] = useState(null);
   const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
@@ -126,7 +134,7 @@ export default function CreateNotePage() {
           onKeyDown={onKeyDownSubmit}
           onSubmit={useFormReturn.handleSubmit(handleNoteSubmit)}
         >
-          <Header />
+          <Header setOpenModal={setOpenModal} />
           <TitleInput useForm={useFormReturn} />
           <DateInput onSelectDate={handleBottomSheetOpen} />
           <CountryInput onSelectCountry={handleBottomSheetOpen} />
