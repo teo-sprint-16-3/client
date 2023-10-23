@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import introLogo from "../../assets/icons/introLogo.svg";
+import introLogo from "../../assets/icons/walkTheWorld.gif";
 import s from "./index.module.scss";
 import Popup from "../common/Popup";
 
