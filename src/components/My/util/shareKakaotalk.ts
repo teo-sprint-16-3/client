@@ -25,13 +25,14 @@ const shareKakaotalk = async (ref: React.RefObject<HTMLDivElement>) => {
 
       const res = await Kakao.Share.uploadImage({ file: file });
       const imgUrl = res.infos.original.url;
+      // 배포사이트 주소!
       const siteUrl = "";
 
       await Kakao.Share.sendDefault({
         objectType: "feed",
         content: {
-          title: "릿의 뱃지",
-          description: "릿의 여행기록입니다.",
+          title: "아시아 탐험가 소금",
+          description: "소금의 여행기록입니다.",
           imageUrl: imgUrl,
           link: {
             mobileWebUrl: siteUrl,
