@@ -1,10 +1,24 @@
 .container {
+  gap: 10px;
+
   width: 360px;
   height: 54px;
   padding: 10px 20px;
 
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuButton {
+  gap: 4px;
+  top: 19px;
+  right: 34.5px;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
