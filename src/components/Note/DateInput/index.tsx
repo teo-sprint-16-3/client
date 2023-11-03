@@ -9,6 +9,9 @@ import s from "./index.module.scss";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import BottomSheet from "../common/BottomSheet";
+import { addDays, subDays } from "date-fns";
+import type { Range } from "react-date-range";
+import type { RangeKeyDict } from "react-date-range";
 
 interface DateObject {
   startDate: string;
@@ -32,10 +35,17 @@ export default function DateInput({
   const [formData, setFormData] = useRecoilState(noteFormState);
   const [openCalender, setOpenCalendar] = useState(false);
 
-  const [selectDate, setSelectDate] = useState([
+  // const [selectDate, setSelectDate] = useState([
+  //   {
+  //     startDate: null,
+  //     endDate: new Date(""),
+  //     key: "selection",
+  //   },
+  // ]);
+  const [selectDate, setSelectDate] = useState<Range[] | undefined>([
     {
-      startDate: null,
-      endDate: new Date(""),
+      startDate: subDays(new Date(), 0),
+      endDate: addDays(new Date(), 0),
       key: "selection",
     },
   ]);
@@ -50,20 +60,22 @@ export default function DateInput({
     setOpenCalendar(true);
   };
 
-  const handleSelectDate = (item) => {
-    setSelectDate([item.selection]);
+  const handleSelectDate = (ranges: RangeKeyDict) => {
+    setSelectDate([ranges.selection]);
 
-    if ([item.selection][0].startDate !== [item.selection][0].endDate) {
+    if ([ranges.selection][0].startDate !== [ranges.selection][0].endDate) {
       setFormData({
         ...formData,
         date: {
-          startDate: dayjs([item.selection][0].startDate).format("YYYY.MM.DD"),
-          endDate: dayjs([item.selection][0].endDate).format("YYYY.MM.DD"),
+          startDate: dayjs([ranges.selection][0].startDate).format(
+            "YYYY.MM.DD",
+          ),
+          endDate: dayjs([ranges.selection][0].endDate).format("YYYY.MM.DD"),
         },
       });
       setDate({
-        startDate: dayjs([item.selection][0].startDate).format("YYYY.MM.DD"),
-        endDate: dayjs([item.selection][0].endDate).format("YYYY.MM.DD"),
+        startDate: dayjs([ranges.selection][0].startDate).format("YYYY.MM.DD"),
+        endDate: dayjs([ranges.selection][0].endDate).format("YYYY.MM.DD"),
       });
     }
   };
@@ -102,7 +114,7 @@ export default function DateInput({
                   <DateRange
                     editableDateInputs={true}
                     onChange={(item) => handleSelectDate(item)}
-                    dateDisplayFormat="MM-dd-yyyy"
+                    dateDisplayFormat="yyyy-MM-dd"
                     moveRangeOnFirstSelection={false}
                     ranges={selectDate}
                   />
