@@ -2,7 +2,10 @@ import SearchButton from "../../common/Buttons/SearchButton";
 import Label from "../common/Label";
 import s from "./index.module.scss";
 
-export default function BgmInput({ onSearchBgm }) {
+interface BgmInputProps {
+  onSearchBgm: () => void;
+}
+export default function BgmInput({ onSearchBgm }: BgmInputProps) {
   const handleSearchBgm = () => {
     onSearchBgm();
   };

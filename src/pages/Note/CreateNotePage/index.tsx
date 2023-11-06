@@ -9,8 +9,8 @@ import PictureInput from "../../../components/Note/PictureInput";
 import TextInput from "../../../components/Note/TextInput";
 import TitleInput from "../../../components/Note/TitleInput";
 import Header from "../../../components/Note/common/Header";
-import { useState, KeyboardEvent, useEffect } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useState, KeyboardEvent } from "react";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { produce } from "immer";
 
@@ -18,11 +18,27 @@ import * as yup from "yup";
 import CountryInput from "../../../components/Note/CountryInput";
 import Popup from "../../../components/common/Popup";
 
+// interface NoteInputForm {
+//   title: string;
+//   date: { startDate: string; endDate: string };
+//   country: {
+//     id: string;
+//     properties: {
+//       name: string;
+//       korName: string;
+//     };
+//   };
+//   // country: { name: string; flag?: string };
+//   location?: string;
+//   bgm?: string;
+//   images?: string[];
+//   description?: string;
+// }
+
 interface NoteInputForm {
-  title: string;
-  date: { startDate: string; endDate: string };
-  // country: { name: string; flag?: string };
-  country: {
+  title?: string;
+  date?: { startDate: string; endDate: string };
+  country?: {
     id: string;
     properties: {
       name: string;
@@ -62,7 +78,7 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   // const [bottomSheetContent, setBottomSheetContent] = useState(null);
   const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
-  const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
+  // const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
   const [sheetContent, setSheetContent] = useState("");
   const [date, setDate] = useState({
     startDate: "",
@@ -77,13 +93,22 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   });
   const [isPopup, setIsPopup] = useState(false);
 
+  const { watch } = useForm();
   const useFormReturn = useForm({
     resolver: yupResolver(notePostSchema),
     mode: "onSubmit",
-    // defaultValues: {},
+    defaultValues: {
+      title: "",
+      date: { startDate: "", endDate: "" },
+      country: {
+        id: "",
+        properties: {
+          name: "",
+          korName: "",
+        },
+      },
+    },
   });
-
-  const title = useFormReturn.watch("title");
 
   const handleBottomSheetOpen = (content: string) => {
     setSheetContent(content);
@@ -102,11 +127,11 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     );
   };
 
-  const handleNoteSubmit: SubmitHandler<NoteInputForm> = (data) => {
+  const handleNoteSubmit = (data: NoteInputForm) => {
     const filteredFileUrls = fileUrls.filter((file) => file !== "");
 
     const noteData = {
-      title: data.title,
+      title: data.title ?? "",
       date,
       country,
       location: data.location ?? "",
@@ -132,11 +157,15 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     }
   };
 
-  useEffect(() => {
-    if (title && Object.keys(date).length > 0 && country.id) {
-      setSubmitButtonDisable(false);
-    }
-  }, [title, date, country]);
+  const titleInput = watch("title");
+
+  // const title = useFormReturn.watch("title");
+
+  // useEffect(() => {
+  //   if (titleInput && Object.keys(date).length > 0 && country.id) {
+  //     setSubmitButtonDisable(false);
+  //   }
+  // }, [titleInput, date, country]);
 
   return (
     <>
@@ -169,7 +198,8 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
           />
           <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
           <TextInput useForm={useFormReturn} />
-          <SubmitButton disabled={submitButtonDisable} />
+          <SubmitButton disabled={!titleInput} />
+          {/* <SubmitButton disabled={submitButtonDisable} /> */}
         </form>
       </Container>
 
