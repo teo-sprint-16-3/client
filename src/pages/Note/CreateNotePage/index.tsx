@@ -141,6 +141,7 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     };
 
     setFormData(noteData);
+    // formData
     // console.log("제출완료", noteData);
 
     // TODO: 수정 기능

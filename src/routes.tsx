@@ -5,7 +5,7 @@ import { FilterNote } from "./pages/Note/FilterNote";
 import MyPage from "./pages/MyPage";
 import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
-import CreateNotePage from "./pages/Note/CreateNotePage";
+import { CreateNotePage } from "./pages/Note/CreateNotePage";
 import BadgePage from "./pages/MyPage/BadgePage";
 import { Suspense } from "react";
 

@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import styles from "./index.module.scss";
 import defaultFlag from "../../assets/countryFlags/other.svg";
 interface StampProps {

@@ -14,31 +14,6 @@ interface Props {
   filter?: string;
 }
 
-// 이거 NoteSummary의 Props와 type 겹치는데 원래는 별도의 types 폴더에 빼는게 좋음
-// 지금은 시간이 없으므로 그냥 함
-interface DataProps {
-  year: number;
-  country: string;
-  flag: string;
-  title: string;
-  date: string;
-  location?: string;
-  bgm?: string;
-  image?: string;
-}
-
-interface CountryDataProps {
-  flag: string;
-  name: string;
-  count: number;
-}
-
-interface YearDataProps {
-  year: number;
-  flags: string[];
-  count: number;
-}
-
 const mockData = [
   {
     year: 2023,

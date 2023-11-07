@@ -19,12 +19,6 @@ const My = () => {
     Kakao.init("75c50c5dc28a7b915981b7342aa59a7b");
   }, []);
 
-  const handleDownload = () => {
-    if (!screenRef.current) return;
-
-    shareKakaotalk(screenRef);
-  };
-
   const handleOpenPopup = () => {
     setIsPopup((prev) => !prev);
   };

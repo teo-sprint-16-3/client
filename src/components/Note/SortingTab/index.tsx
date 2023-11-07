@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import s from "./index.module.scss";
 
 interface Props {
