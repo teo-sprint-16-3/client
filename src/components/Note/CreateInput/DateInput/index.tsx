@@ -2,13 +2,13 @@ import { useState } from "react";
 import { DateRange } from "react-date-range";
 import dayjs from "dayjs";
 import { useRecoilState } from "recoil";
-import { noteFormState } from "../../../recoil/post/atom";
+import { noteFormState } from "../../../../recoil/post/atom";
 
-import Label from "../common/Label";
+import Label from "../../common/Label";
 import s from "./index.module.scss";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import BottomSheet from "../common/BottomSheet";
+import BottomSheet from "../../common/BottomSheet";
 import { addDays, subDays } from "date-fns";
 import type { Range } from "react-date-range";
 import type { RangeKeyDict } from "react-date-range";

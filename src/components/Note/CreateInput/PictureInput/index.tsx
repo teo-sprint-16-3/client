@@ -1,6 +1,6 @@
 import s from "./index.module.scss";
-import UploadFile from "../common/UploadFile";
-import Label from "../common/Label";
+import UploadFile from "../../common/UploadFile";
+import Label from "../../common/Label";
 
 interface PictureInputProps {
   fileUrls: string[];

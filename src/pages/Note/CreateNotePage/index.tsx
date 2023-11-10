@@ -2,12 +2,12 @@ import { useRecoilState } from "recoil";
 import { noteFormState } from "../../../recoil/post/atom";
 import SubmitButton from "../../../components/common/Buttons/SubmitButton";
 import Container from "../../../components/Note/common/Container";
-import BgmInput from "../../../components/Note/BgmInput";
-import DateInput from "../../../components/Note/DateInput";
-import LocationInput from "../../../components/Note/LocationInput";
-import PictureInput from "../../../components/Note/PictureInput";
-import TextInput from "../../../components/Note/TextInput";
-import TitleInput from "../../../components/Note/TitleInput";
+import BgmInput from "../../../components/Note/CreateInput/BgmInput";
+import DateInput from "../../../components/Note/CreateInput/DateInput";
+import LocationInput from "../../../components/Note/CreateInput/LocationInput";
+import PictureInput from "../../../components/Note/CreateInput/PictureInput";
+import TextInput from "../../../components/Note/CreateInput/TextInput";
+import TitleInput from "../../../components/Note/CreateInput/TitleInput";
 import Header from "../../../components/Note/common/Header";
 import { useState, KeyboardEvent } from "react";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { produce } from "immer";
 
 import * as yup from "yup";
-import CountryInput from "../../../components/Note/CountryInput";
+import CountryInput from "../../../components/Note/CreateInput/CountryInput";
 import Popup from "../../../components/common/Popup";
 
 // interface NoteInputForm {

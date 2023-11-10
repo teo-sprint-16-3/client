@@ -1,5 +1,5 @@
-import SearchButton from "../../common/Buttons/SearchButton";
-import Label from "../common/Label";
+import SearchButton from "../../../common/Buttons/SearchButton";
+import Label from "../../common/Label";
 import s from "./index.module.scss";
 
 interface BgmInputProps {
