@@ -78,7 +78,6 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   // const [bottomSheetContent, setBottomSheetContent] = useState(null);
   const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
-  // const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
   const [sheetContent, setSheetContent] = useState("");
   const [date, setDate] = useState({
     startDate: "",
@@ -93,7 +92,6 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   });
   const [isPopup, setIsPopup] = useState(false);
 
-  const { watch } = useForm();
   const useFormReturn = useForm({
     resolver: yupResolver(notePostSchema),
     mode: "onSubmit",
@@ -157,9 +155,10 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     }
   };
 
-  const titleInput = watch("title");
+  const titleInput = useFormReturn.watch("title");
 
-  // const title = useFormReturn.watch("title");
+  const isSubmitButtonDisabled =
+    titleInput && date.startDate && date.endDate && country.id;
 
   // useEffect(() => {
   //   if (titleInput && Object.keys(date).length > 0 && country.id) {
@@ -198,7 +197,7 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
           />
           <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
           <TextInput useForm={useFormReturn} />
-          <SubmitButton disabled={!titleInput} />
+          <SubmitButton disabled={!isSubmitButtonDisabled} />
           {/* <SubmitButton disabled={submitButtonDisable} /> */}
         </form>
       </Container>

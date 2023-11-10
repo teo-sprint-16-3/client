@@ -1,8 +1,10 @@
 .buttonContainer {
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 29px;
+  margin-bottom: 20px;
 }
 
 .submitButton {
