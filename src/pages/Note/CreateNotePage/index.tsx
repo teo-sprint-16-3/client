@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { noteFormState } from "../../../recoil/post/atom";
-import SubmitButton from "../../../components/common/Buttons/SubmitButton";
+import SubmitButton from "../../../components/Note/common/Buttons/SubmitButton";
 import Container from "../../../components/Note/common/Container";
 import BgmInput from "../../../components/Note/CreateInput/BgmInput";
 import DateInput from "../../../components/Note/CreateInput/DateInput";
@@ -139,7 +139,7 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     };
 
     setFormData(noteData);
-    // console.log("제출완료", noteData);
+    console.log("제출완료", noteData);
 
     // TODO: 수정 기능
     // if(isEdit){
@@ -192,13 +192,15 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
           />
           <LocationInput useForm={useFormReturn} />
           <BgmInput
-            // onSearchBgm={handleBottomSheetOpen}
-            onSearchBgm={() => setIsPopup(true)}
+            sheetContent={sheetContent}
+            isBottomSheetOpen={isBottomSheetOpen}
+            onClose={handleBottomSheetClose}
+            onSearchBgm={handleBottomSheetOpen}
+            // onSearchBgm={() => setIsPopup(true)}
           />
           <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
           <TextInput useForm={useFormReturn} />
           <SubmitButton disabled={!isSubmitButtonDisabled} />
-          {/* <SubmitButton disabled={submitButtonDisable} /> */}
         </form>
       </Container>
 
