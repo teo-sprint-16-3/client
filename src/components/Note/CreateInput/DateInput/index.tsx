@@ -101,30 +101,30 @@ export default function DateInput({
         >
           {formData.date.endDate ? formData.date.endDate : "종료일"}
         </button>
+      </div>
+      <div>
+        {isBottomSheetOpen && sheetContent === "calendar" && (
+          <BottomSheet
+            title="날짜 선택"
+            onSave={handleSaveButton}
+            onClose={onClose}
+          >
+            <div>
+              {openCalender && (
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => handleSelectDate(item)}
+                  dateDisplayFormat="yyyy-MM-dd"
+                  moveRangeOnFirstSelection={false}
+                  ranges={selectDate}
+                />
+              )}
+            </div>
+          </BottomSheet>
+        )}
+      </div>
 
-        <div>
-          {isBottomSheetOpen && sheetContent === "calendar" && (
-            <BottomSheet
-              title="날짜 선택"
-              onSave={handleSaveButton}
-              onClose={onClose}
-            >
-              <div className={s.calendar}>
-                {openCalender && (
-                  <DateRange
-                    editableDateInputs={true}
-                    onChange={(item) => handleSelectDate(item)}
-                    dateDisplayFormat="yyyy-MM-dd"
-                    moveRangeOnFirstSelection={false}
-                    ranges={selectDate}
-                  />
-                )}
-              </div>
-            </BottomSheet>
-          )}
-        </div>
-
-        {/* <div className={s.calendar}>
+      {/* <div className={s.calendar}>
           {openCalender && (
             <DateRange
               editableDateInputs={true}
@@ -135,7 +135,6 @@ export default function DateInput({
             />
           )}
         </div> */}
-      </div>
     </div>
   );
 }

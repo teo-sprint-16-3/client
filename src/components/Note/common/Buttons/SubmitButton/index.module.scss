@@ -1,3 +1,5 @@
+@use "src/styles/variables" as v;
+
 .buttonContainer {
   position: fixed;
   bottom: 0;
@@ -11,11 +13,11 @@
   width: 320px;
   height: 60px;
   border-radius: 10px;
-  background-color: blue;
-  color: #fff;
+  background-color: v.$MAIN-400;
+  color: v.$BLACK-FFF;
 
   &:disabled {
-    background-color: #ddd;
-    color: #aaa;
+    background-color: v.$BLACK-DDD;
+    color: v.$BLACK-AAA;
   }
 }

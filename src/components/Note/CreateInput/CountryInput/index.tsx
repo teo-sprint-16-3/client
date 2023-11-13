@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SearchButton from "../../../common/Buttons/SearchButton";
-import Countries from "../../../common/Countries";
+import SearchButton from "../../common/Buttons/SearchButton";
+import Countries from "../../common/Countries";
 import BottomSheet from "../../common/BottomSheet";
 import Label from "../../common/Label";
 import s from "./index.module.scss";
@@ -62,7 +62,7 @@ export default function CountryInput({
             onSave={handleSaveButton}
             onClose={onClose}
           >
-            <div className={s.countryContent}>
+            <div>
               {openCountry && (
                 <Countries handleCountrySelect={handleCountryClick} />
               )}
