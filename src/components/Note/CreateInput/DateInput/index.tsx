@@ -2,13 +2,13 @@ import { useState } from "react";
 import { DateRange } from "react-date-range";
 import dayjs from "dayjs";
 import { useRecoilState } from "recoil";
-import { noteFormState } from "../../../recoil/post/atom";
+import { noteFormState } from "../../../../recoil/post/atom";
 
-import Label from "../common/Label";
+import Label from "../../common/Label";
 import s from "./index.module.scss";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import BottomSheet from "../common/BottomSheet";
+import BottomSheet from "../../common/BottomSheet";
 import { addDays, subDays } from "date-fns";
 import type { Range } from "react-date-range";
 import type { RangeKeyDict } from "react-date-range";
@@ -101,30 +101,30 @@ export default function DateInput({
         >
           {formData.date.endDate ? formData.date.endDate : "종료일"}
         </button>
+      </div>
+      <div>
+        {isBottomSheetOpen && sheetContent === "calendar" && (
+          <BottomSheet
+            title="날짜 선택"
+            onSave={handleSaveButton}
+            onClose={onClose}
+          >
+            <div>
+              {openCalender && (
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => handleSelectDate(item)}
+                  dateDisplayFormat="yyyy-MM-dd"
+                  moveRangeOnFirstSelection={false}
+                  ranges={selectDate}
+                />
+              )}
+            </div>
+          </BottomSheet>
+        )}
+      </div>
 
-        <div>
-          {isBottomSheetOpen && sheetContent === "calendar" && (
-            <BottomSheet
-              title="날짜 선택"
-              onSave={handleSaveButton}
-              onClose={onClose}
-            >
-              <div className={s.calendar}>
-                {openCalender && (
-                  <DateRange
-                    editableDateInputs={true}
-                    onChange={(item) => handleSelectDate(item)}
-                    dateDisplayFormat="yyyy-MM-dd"
-                    moveRangeOnFirstSelection={false}
-                    ranges={selectDate}
-                  />
-                )}
-              </div>
-            </BottomSheet>
-          )}
-        </div>
-
-        {/* <div className={s.calendar}>
+      {/* <div className={s.calendar}>
           {openCalender && (
             <DateRange
               editableDateInputs={true}
@@ -135,7 +135,6 @@ export default function DateInput({
             />
           )}
         </div> */}
-      </div>
     </div>
   );
 }

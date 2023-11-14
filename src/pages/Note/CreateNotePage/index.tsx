@@ -1,13 +1,13 @@
 import { useRecoilState } from "recoil";
 import { noteFormState } from "../../../recoil/post/atom";
-import SubmitButton from "../../../components/common/Buttons/SubmitButton";
+import SubmitButton from "../../../components/Note/common/Buttons/SubmitButton";
 import Container from "../../../components/Note/common/Container";
-import BgmInput from "../../../components/Note/BgmInput";
-import DateInput from "../../../components/Note/DateInput";
-import LocationInput from "../../../components/Note/LocationInput";
-import PictureInput from "../../../components/Note/PictureInput";
-import TextInput from "../../../components/Note/TextInput";
-import TitleInput from "../../../components/Note/TitleInput";
+import BgmInput from "../../../components/Note/CreateInput/BgmInput";
+import DateInput from "../../../components/Note/CreateInput/DateInput";
+import LocationInput from "../../../components/Note/CreateInput/LocationInput";
+import PictureInput from "../../../components/Note/CreateInput/PictureInput";
+import TextInput from "../../../components/Note/CreateInput/TextInput";
+import TitleInput from "../../../components/Note/CreateInput/TitleInput";
 import Header from "../../../components/Note/common/Header";
 import { useState, KeyboardEvent } from "react";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { produce } from "immer";
 
 import * as yup from "yup";
-import CountryInput from "../../../components/Note/CountryInput";
+import CountryInput from "../../../components/Note/CreateInput/CountryInput";
 import Popup from "../../../components/common/Popup";
 
 // interface NoteInputForm {
@@ -78,7 +78,6 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   // const [bottomSheetContent, setBottomSheetContent] = useState(null);
   const [fileUrls, setFileUrls] = useState<string[]>(["", "", ""]);
-  // const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
   const [sheetContent, setSheetContent] = useState("");
   const [date, setDate] = useState({
     startDate: "",
@@ -93,7 +92,6 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
   });
   const [isPopup, setIsPopup] = useState(false);
 
-  const { watch } = useForm();
   const useFormReturn = useForm({
     resolver: yupResolver(notePostSchema),
     mode: "onSubmit",
@@ -141,7 +139,7 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     };
 
     setFormData(noteData);
-    // console.log("제출완료", noteData);
+    console.log("제출완료", noteData);
 
     // TODO: 수정 기능
     // if(isEdit){
@@ -157,9 +155,10 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
     }
   };
 
-  const titleInput = watch("title");
+  const titleInput = useFormReturn.watch("title");
 
-  // const title = useFormReturn.watch("title");
+  const isSubmitButtonDisabled =
+    titleInput && date.startDate && date.endDate && country.id;
 
   // useEffect(() => {
   //   if (titleInput && Object.keys(date).length > 0 && country.id) {
@@ -193,13 +192,15 @@ export default function CreateNotePage({ setOpenModal }: IProps) {
           />
           <LocationInput useForm={useFormReturn} />
           <BgmInput
-            // onSearchBgm={handleBottomSheetOpen}
-            onSearchBgm={() => setIsPopup(true)}
+            sheetContent={sheetContent}
+            isBottomSheetOpen={isBottomSheetOpen}
+            onClose={handleBottomSheetClose}
+            onSearchBgm={handleBottomSheetOpen}
+            // onSearchBgm={() => setIsPopup(true)}
           />
           <PictureInput fileUrls={fileUrls} onChangeFile={onChangeFileUrls} />
           <TextInput useForm={useFormReturn} />
-          <SubmitButton disabled={!titleInput} />
-          {/* <SubmitButton disabled={submitButtonDisable} /> */}
+          <SubmitButton disabled={!isSubmitButtonDisabled} />
         </form>
       </Container>
 

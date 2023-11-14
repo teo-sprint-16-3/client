@@ -1,8 +1,8 @@
 import { Controller } from "react-hook-form";
 import s from "./index.module.scss";
-import Label from "../common/Label";
+import Label from "../../common/Label";
 import { UseFormReturn } from "react-hook-form";
-import Input from "../common/Input";
+import Input from "../../common/Input";
 // import ErrorMessage from "../common/ErrorMessage";
 // import { useRecoilState } from "recoil";
 // import { noteFormState } from "../../../recoil/post/atom";

@@ -1,0 +1,23 @@
+@use "src/styles/variables" as v;
+
+.buttonContainer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.submitButton {
+  width: 320px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: v.$MAIN-400;
+  color: v.$BLACK-FFF;
+
+  &:disabled {
+    background-color: v.$BLACK-DDD;
+    color: v.$BLACK-AAA;
+  }
+}

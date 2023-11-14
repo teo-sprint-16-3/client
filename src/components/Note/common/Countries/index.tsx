@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { COUNTRY_DATA } from "../../../assets/data/countryData";
+import { COUNTRY_DATA } from "../../../../assets/data/countryData";
 import s from "./index.module.scss";
 
 type CountryInfo = {
