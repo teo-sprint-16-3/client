@@ -1,4 +1,4 @@
-import SearchIcon from "../../../../assets/icons/search.svg";
+import SearchIcon from "../../../../../assets/icons/search.svg";
 import s from "./index.module.scss";
 
 interface SearchButtonProps {

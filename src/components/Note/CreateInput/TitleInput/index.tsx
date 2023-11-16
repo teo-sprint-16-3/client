@@ -1,18 +1,18 @@
 import { Controller } from "react-hook-form";
 import s from "./index.module.scss";
-import Label from "../common/Label";
+import Label from "../../common/Label";
 import { UseFormReturn } from "react-hook-form";
-import Input from "../common/Input";
+import Input from "../../common/Input";
 // import ErrorMessage from "../common/ErrorMessage";
-import { useRecoilState } from "recoil";
-import { noteFormState } from "../../../recoil/post/atom";
+// import { useRecoilState } from "recoil";
+// import { noteFormState } from "../../../recoil/post/atom";
 
 interface TitleInputProps {
   useForm: UseFormReturn;
 }
 
 export default function TitleInput({ useForm }: TitleInputProps) {
-  const [formData, setFormData] = useRecoilState(noteFormState);
+  // const [formData, setFormData] = useRecoilState(noteFormState);
 
   // const handleChange = (e: any) => {
   //   setFormData({ ...formData, title: e.target.value });

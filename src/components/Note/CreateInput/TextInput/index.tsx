@@ -1,7 +1,7 @@
 import s from "./index.module.scss";
 import { Controller } from "react-hook-form";
 import { UseFormReturn } from "react-hook-form";
-import Label from "../common/Label";
+import Label from "../../common/Label";
 
 interface TextInputProps {
   useForm: UseFormReturn;

@@ -1,8 +1,8 @@
 import { Controller } from "react-hook-form";
-import Label from "../common/Label";
+import Label from "../../common/Label";
 import s from "./index.module.scss";
 import { UseFormReturn } from "react-hook-form";
-import Input from "../common/Input";
+import Input from "../../common/Input";
 
 interface LocationInputProps {
   useForm: UseFormReturn;
