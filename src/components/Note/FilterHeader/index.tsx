@@ -8,10 +8,11 @@ import s from "./index.module.scss";
 interface Props {
   title: string;
   hasMenu?: boolean;
+  onClickMenu?: () => void;
 }
 
 // TODO: 컴포넌트명 변경 필요
-export function FilterHeader({ title, hasMenu }: Props) {
+export function FilterHeader({ title, hasMenu, onClickMenu }: Props) {
   const navigate = useNavigate();
 
   return (
@@ -24,7 +25,7 @@ export function FilterHeader({ title, hasMenu }: Props) {
       />
       <div className={s.title}>{title}</div>
       {hasMenu && (
-        <button className={s.menuButton}>
+        <button className={s.menuButton} onClick={onClickMenu}>
           <img src={ellipse} alt="메뉴 버튼" />
           <img src={ellipse} alt="메뉴 버튼" />
           <img src={ellipse} alt="메뉴 버튼" />

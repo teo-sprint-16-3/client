@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 import { FilterHeader } from "../../../components/Note/FilterHeader";
 import { TagChip } from "../../../components/Note/common/TagChip";
+import { BottomSheet } from "../../../components/Note/NoteDetail/BottomSheet";
 
 import calendarBlue from "../../../assets/icons/calendar-blue.svg";
 import locationBlue from "../../../assets/icons/location-blue.svg";
@@ -36,9 +39,20 @@ const {
 } = mockData;
 
 export function NoteDetail() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className={s.container}>
-      <FilterHeader title={title} hasMenu />
+      {/* {openModal && <BottomSheet setOpenModal={setOpenModal} />} */}
+      <FilterHeader title={title} hasMenu onClickMenu={handleOpenMenu} />
       {/* TODO: 컴포넌트로 분리 */}
       <div className={s.summaryWrapper}>
         <div className={s.titleWrapper}>
@@ -79,6 +93,8 @@ export function NoteDetail() {
           </p>
         ))}
       </div>
+      {/* TODO: React.CreatePortal로 분리 */}
+      {isMenuOpen && <BottomSheet onClose={handleCloseMenu} />}
     </div>
   );
 }

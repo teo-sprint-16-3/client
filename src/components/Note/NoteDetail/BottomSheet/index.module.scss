@@ -1,0 +1,63 @@
+.background {
+  width: 360px;
+  height: 740px;
+  top: 0;
+  left: 0;
+
+  position: fixed;
+
+  background-color: #000;
+  opacity: 0.2;
+}
+
+.bottomSheet {
+  width: 360px;
+  height: 184px;
+  padding: 12px 0 30px 0;
+  bottom: 0;
+
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 12px 12px 0 0;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.closeButtonWrapper {
+  width: 360px;
+  height: 42px;
+  padding: 0 20px 10px 20px;
+
+  position: relative;
+}
+
+.closeButton {
+  width: 16px;
+  height: 16px;
+  top: 0;
+  right: 20px;
+
+  position: absolute;
+}
+
+.closeButton > img {
+  width: 16px;
+  height: 16px;
+}
+
+.menuButton {
+  width: 360px;
+  height: 50px;
+  padding: 10px;
+
+  color: #000;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: -0.36px;
+}
