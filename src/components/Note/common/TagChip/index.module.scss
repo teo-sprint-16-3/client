@@ -1,0 +1,52 @@
+.container {
+  gap: 4px;
+
+  display: flex;
+  align-items: center;
+}
+
+.year {
+  width: 39px;
+  height: 20px;
+  padding: 2px 5px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--main-500, #005ae0);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.24px;
+
+  border-radius: 3px;
+  background: var(--main-50, #cce0ff);
+}
+
+.country {
+  height: 20px;
+  padding: 2px 5px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--point-color-dark, #ff5824);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.24px;
+
+  border-radius: 3px;
+  background: var(--point-color-sub, #ffe2d8);
+}
+
+.flag {
+  width: 30px;
+  height: 18px;
+
+  border-radius: 4px;
+}

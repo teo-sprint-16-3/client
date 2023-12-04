@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import IntroPage from "./pages/IntroPage";
 import { Note } from "./pages/Note";
 import { FilterNote } from "./pages/Note/FilterNote";
+import { NoteDetail } from "./pages/Note/NoteDetail";
 import MyPage from "./pages/MyPage";
 import StampPage from "./pages/StampPage";
 import WorldMapPage from "./pages/WorldMapPage";
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
   {
     path: "/note/:params",
     element: <FilterNote />,
+  },
+  {
+    path: "/note/detail/:id",
+    element: <NoteDetail />,
   },
   {
     path: "/map",
