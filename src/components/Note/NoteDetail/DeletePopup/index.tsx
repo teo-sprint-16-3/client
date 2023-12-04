@@ -1,5 +1,3 @@
-import { createPortal } from "react-dom";
-
 import s from "./index.module.scss";
 
 interface Props {
@@ -8,9 +6,7 @@ interface Props {
 }
 
 export const DeletePopup = ({ onClose, onDelete }: Props) => {
-  const deletePopupRoot = document.querySelector("#delete-popup-root");
-
-  return createPortal(
+  return (
     <div>
       <div className={s.background}></div>
       <div className={s.deletePopup}>
@@ -27,7 +23,6 @@ export const DeletePopup = ({ onClose, onDelete }: Props) => {
           </button>
         </div>
       </div>
-    </div>,
-    deletePopupRoot as Element,
+    </div>
   );
 };
