@@ -100,12 +100,14 @@
 .image {
   width: 320px;
   height: 320px;
-  margin: 20px;
+  margin: 20px 20px 10px 20px;
 
   border-radius: 4px;
 }
 
 .flex {
+  height: 6px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,4 +124,14 @@
   font-weight: 500;
   line-height: 150%;
   letter-spacing: -0.3px;
+}
+
+.ellipseWrapper {
+  width: 320px;
+  height: 6px;
+  gap: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

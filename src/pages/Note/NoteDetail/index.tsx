@@ -4,6 +4,7 @@ import { FilterHeader } from "../../../components/Note/FilterHeader";
 import { TagChip } from "../../../components/Note/common/TagChip";
 import { BottomSheet } from "../../../components/Note/NoteDetail/BottomSheet";
 import { DeletePopup } from "../../../components/Note/NoteDetail/DeletePopup";
+import { ImageIndicator } from "../../../components/Note/NoteDetail/ImageIndicator";
 
 import calendarBlue from "../../../assets/icons/calendar-blue.svg";
 import locationBlue from "../../../assets/icons/location-blue.svg";
@@ -20,7 +21,11 @@ const mockData = {
   date: "2023.07.15",
   location: "욜링암 협곡 사이",
   music: "BOL4 - TRAVEL",
-  image: "/src/assets/images/note1.png",
+  images: [
+    "/src/assets/images/note1.png",
+    "/src/assets/images/note2.png",
+    "/src/assets/images/sushi.jpg",
+  ],
   description: `생각보다 재밌던 말타기🐴 말이 엄청나게 큰 동물
   이란 것도 처음 알았다. 말에 올라가자 바닥이 꽤 멀어서 처음에는 살짝 긴장했지만 나중에는 적응해서 재밌었다!
   케이와 릿은 승마가 처음이라 했는데 바로 적응해서 신나게 앞으로 나가서 넘넘 부러웠다🥺 
@@ -35,13 +40,14 @@ const {
   date,
   location,
   music,
-  image,
+  images,
   description,
 } = mockData;
 
 export function NoteDetail() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [imageIdx, setImageIdx] = useState(0);
 
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
@@ -65,6 +71,10 @@ export function NoteDetail() {
     // 아래는 임시
     setIsPopupOpen(false);
     console.log("페이지 삭제 API 호출");
+  };
+
+  const handleChangeImage = (idx: number) => {
+    setImageIdx(idx);
   };
 
   return (
@@ -96,12 +106,19 @@ export function NoteDetail() {
           </div>
         </div>
       </div>
-      <img
-        className={s.image}
-        src="/src/assets/images/note1.png"
-        alt="노트 이미지"
-      />
-      {/* TODO: 이미지와 설명 사이에 ellipse 인디케이터 있어야 함 */}
+      <img className={s.image} src={images[imageIdx]} alt="노트 이미지" />
+      <div className={s.flex}>
+        <div className={s.ellipseWrapper}>
+          {images.map((_, idx) => (
+            <ImageIndicator
+              key={idx}
+              idx={idx}
+              isActive={idx === imageIdx}
+              onClick={handleChangeImage}
+            />
+          ))}
+        </div>
+      </div>
       <div className={s.descriptionWrapper}>
         {description.split("\n").map((line, index) => (
           <p key={index}>
