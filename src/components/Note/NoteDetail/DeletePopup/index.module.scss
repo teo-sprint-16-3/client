@@ -1,0 +1,110 @@
+// BottomSheet 컴포넌트와 중복된 ruleset
+// 중복을 줄일 수 있는 방법은 없을까?
+.background {
+  width: 360px;
+  height: 740px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  position: absolute;
+
+  background-color: #000;
+  opacity: 0.2;
+}
+
+.deletePopup {
+  width: 310px;
+  height: 158px;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+
+  background-color: #fff;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 10px 10px 10px 10px;
+}
+
+.messageWrapper {
+  width: 310px;
+  height: 108px;
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #fff;
+
+  border-radius: 10px 10px 0 0;
+}
+
+.message {
+  color: var(--black-222, #222);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.16px;
+}
+
+.subMessage {
+  color: var(--black-222, #222);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.16px;
+}
+
+.buttonWrapper {
+  width: 310px;
+  height: 50px;
+
+  display: flex;
+}
+
+.cancelButton {
+  width: 155px;
+  height: 50px;
+
+  color: #fff;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+
+  background-color: var(--black-666, #666);
+
+  border-bottom-left-radius: 10px;
+}
+
+.deleteButton {
+  width: 155px;
+  height: 50px;
+
+  color: #fff;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+
+  background-color: #1472ff;
+
+  border-bottom-right-radius: 10px;
+}

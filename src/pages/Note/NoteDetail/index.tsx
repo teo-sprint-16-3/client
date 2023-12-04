@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FilterHeader } from "../../../components/Note/FilterHeader";
 import { TagChip } from "../../../components/Note/common/TagChip";
 import { BottomSheet } from "../../../components/Note/NoteDetail/BottomSheet";
+import { DeletePopup } from "../../../components/Note/NoteDetail/DeletePopup";
 
 import calendarBlue from "../../../assets/icons/calendar-blue.svg";
 import locationBlue from "../../../assets/icons/location-blue.svg";
@@ -40,6 +41,7 @@ const {
 
 export function NoteDetail() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
@@ -49,9 +51,24 @@ export function NoteDetail() {
     setIsMenuOpen(false);
   };
 
+  const handleOpenPopup = () => {
+    setIsMenuOpen(false);
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleDeletePage = () => {
+    // TODO: 페이지 삭제 API 호출
+    // 아래는 임시
+    setIsPopupOpen(false);
+    console.log("페이지 삭제 API 호출");
+  };
+
   return (
     <div className={s.container}>
-      {/* {openModal && <BottomSheet setOpenModal={setOpenModal} />} */}
       <FilterHeader title={title} hasMenu onClickMenu={handleOpenMenu} />
       {/* TODO: 컴포넌트로 분리 */}
       <div className={s.summaryWrapper}>
@@ -93,8 +110,12 @@ export function NoteDetail() {
           </p>
         ))}
       </div>
-      {/* TODO: React.CreatePortal로 분리 */}
-      {isMenuOpen && <BottomSheet onClose={handleCloseMenu} />}
+      {isMenuOpen && (
+        <BottomSheet onClose={handleCloseMenu} onDelete={handleOpenPopup} />
+      )}
+      {isPopupOpen && (
+        <DeletePopup onClose={handleClosePopup} onDelete={handleDeletePage} />
+      )}
     </div>
   );
 }
