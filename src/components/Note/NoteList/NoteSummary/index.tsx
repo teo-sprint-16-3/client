@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import calendarIcon from "../../../../assets/icons/calendar.svg";
 import locationIcon from "../../../../assets/icons/location.svg";
 import bgmIcon from "../../../../assets/icons/music.svg";
@@ -27,8 +29,17 @@ export function NoteSummary({
   image,
   setIsPopup,
 }: Props) {
+  const navigate = useNavigate();
+
+  const handleMoveToNote = () => {
+    // TODO: 각 노트에 맞게 이동하게끔 수정
+    // 일단은 임시로 sample 노트로만 이동하게끔 구현
+    // console.log("노트 상세 페이지로 이동!");
+    navigate("/note/detail/1");
+  };
+
   return (
-    <div className={s.container} onClick={() => setIsPopup(true)}>
+    <div className={s.container} onClick={handleMoveToNote}>
       <div className={s.titleWrapper}>
         <div className={s.tagChipWrapper}>
           <div className={`${s.tag} ${s.year}`}>{year}</div>

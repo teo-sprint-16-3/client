@@ -232,9 +232,9 @@ export function NoteList({
         data.map(({ ...props }, index) => (
           <YearSummary key={index} {...props} />
         ))}
-      {isPopup && (
+      {/* {isPopup && (
         <Popup title="노트 상세조회 기능 준비중" setIsPopup={setIsPopup} />
-      )}
+      )} */}
     </div>
   );
 }
