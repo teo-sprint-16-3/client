@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FilterHeader } from "../../../components/Note/FilterHeader";
 import { TagChip } from "../../../components/Note/common/TagChip";
@@ -11,6 +12,7 @@ import locationBlue from "../../../assets/icons/location-blue.svg";
 import musicBlue from "../../../assets/icons/music-blue.svg";
 
 import s from "./index.module.scss";
+import { Navigate } from "react-router-dom";
 
 // TODO: To be changed to real data(API)
 const mockData = {
@@ -71,11 +73,14 @@ export function NoteDetail() {
     // 아래는 임시
     setIsPopupOpen(false);
     console.log("페이지 삭제 API 호출");
+    navigate("/note");
   };
 
   const handleChangeImage = (idx: number) => {
     setImageIdx(idx);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className={s.container}>

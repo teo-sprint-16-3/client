@@ -1,5 +1,3 @@
-import { createPortal } from "react-dom";
-
 import closeButton from "../../../../assets/icons/close.svg";
 
 import s from "./index.module.scss";
@@ -20,10 +18,8 @@ export const BottomSheet = ({ onClose, onDelete }: Props) => {
     onDelete();
   };
 
-  const bottomSheetRoot = document.querySelector("#bottom-sheet-root");
-
-  return createPortal(
-    <div>
+  return (
+    <>
       <div className={s.background} onClick={onClose}></div>
       <div className={s.bottomSheet}>
         <div className={s.closeButtonWrapper}>
@@ -38,7 +34,6 @@ export const BottomSheet = ({ onClose, onDelete }: Props) => {
           페이지 삭제
         </button>
       </div>
-    </div>,
-    bottomSheetRoot as Element,
+    </>
   );
 };

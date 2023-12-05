@@ -1,10 +1,11 @@
 .background {
   width: 360px;
-  height: 740px;
+  height: 100%;
+  min-height: 100vh;
   top: 0;
   left: 0;
 
-  position: fixed;
+  position: absolute;
 
   background-color: #000;
   opacity: 0.2;
